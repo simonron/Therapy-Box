@@ -109,19 +109,23 @@ return(true);
   // Check input errors before inserting in database
   if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
     $profile_image ="ELEPHANT !!!!";
-$param_profile_image = $profile_image; 
+    //$email ="a sock";
+    $param_profileimage = $profile_image; 
+    $param_email = $email;
+    //$username ="give it a go3";
     /*if($profile_image == "" ){$profile_image="no avatar uploaded";}*/
       // Prepare an insert statement
-      $sql = "INSERT INTO users (username, password, profile_image, email) VALUES ('goose3','yack3','rabbit3','walruss')";
+      $sql = "INSERT INTO users (username, password, profile_image, email) VALUES (?,?,?,?)";
 
     if($stmt = mysqli_prepare($link, $sql)){
       // Bind variables to the prepared statement as parameters
-      mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+      mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password, $param_profileimage,  $param_email);
 
       // Set parameters
       $param_username = $username;
       $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
       $param_email = $email;
+      $param_profileimage = $profile_image;
       
 
       // Attempt to execute the prepared statement
@@ -129,7 +133,7 @@ $param_profile_image = $profile_image;
         // Redirect to index login page
         header("location: index.php");
       } else{
-        echo "There is a problem - please try again";
+        echo "There is a problem - can find a file - please try again";
       }
     }
 
