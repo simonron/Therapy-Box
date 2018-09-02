@@ -34,26 +34,29 @@ if (mysqli_num_rows($result) > 0) {
   </head>
 
   <body>
-   <div class= "internal_wrappper">
-<br>
-     
-     
-      <h1>Good day <b><?php echo $username ?></b></h1>
+    <div class="bgContainer">
+      <div class="internal_wrappper">
+        <br>
 
-      <p>
-        <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
-        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-      </p>
-      
-      
-    </div>
-  <?php 
+
+        <h1>Good day <b><?php echo $username ?></b></h1>
+
+        <p>
+          <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
+          <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        </p>
+
+
+      </div>
+      <?php 
+   if ($profile_image == ""){ 
+     echo" You have not set a profile image";}else{
     $file = 'images/profiles/'.$profile_image;
-    if (file_exists($file)); { 
+   
   echo "<img src = $file style='width:40vw'>;";
 }    
     ?>
-                                                                        
+    </div>
   </body>
 
   </html>
