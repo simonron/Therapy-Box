@@ -64,6 +64,7 @@
   console.log(JSON.stringify($obj));
   //console.log("!!!!!!!!!!!!"+$obj.coord.lat);
   console.log("!!!!!!!!!!!!" + $obj.weather[0].description);
+  
   temp = $obj.main.temp;
   tempC = temp - 273;
   console.log("!!!!!!!!!!!!" + temp);

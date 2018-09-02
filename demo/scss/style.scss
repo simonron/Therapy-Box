@@ -1,28 +1,28 @@
-$yellow : #fee47d;
+$yellow: #fee47d;
 
 body {
   font: 14px sans-serif;
   text-align: center;
 }
 
-h2{
-  color:#fff;
+h2 {
+  color: #fff;
 }
 
 .form-control,
-input{
+input {
   background: none !important;
   border: none;
-  box-shadow:0 0 0 0 transparent !important;
+  box-shadow: 0 0 0 0 transparent !important;
   color: #fff;
   border-bottom: 1px #fff solid;
   border-radius: 0;
   padding-left: 0px;
-  padding-bottom: 0px;   
+  padding-bottom: 0px;
 }
 
-.form-control:focus{
-  border-color :#fff;
+.form-control:focus {
+  border-color: #fff;
 }
 
 input:-webkit-autofill {
@@ -31,12 +31,13 @@ input:-webkit-autofill {
   border-bottom: 1px #fff solid;
 }
 
-.btn-primary{
-  background:#ffde55 !important;
-  border-bottom:solid 0px transparent !important;
+.btn-primary {
+  background: #ffde55 !important;
+  border-bottom: solid 0px transparent !important;
 }
-.btn-primary:hover{
-  color:#fff !important;
+
+.btn-primary:hover {
+  color: #fff !important;
 }
 
 .bgContainer {
@@ -46,43 +47,48 @@ input:-webkit-autofill {
   background-repeat: no-repeat;
 }
 
+.bgContainer.dashboard {
+ height: 100% !important;
+}
+
 .wrapper {
   padding-top: 20px;
   margin: 0 auto;
-  width:70%;
+  width: 70%;
 }
 
 
-span.help-block{
-  float:left;
+span.help-block {
+  float: left;
 }
 
-form{
-  display:flex;
+form {
+  display: flex;
   flex-flow: row wrap;
-  width:70vw;
-  max-width:900px;
-  margin:0 auto;
+  width: 70vw;
+  max-width: 900px;
+  margin: 0 auto;
   justify-content: space-around;
 }
 
 
-form div{
-  width:28vw;
-  min-width:250px;
-  border-right:20px solid transparent;
-  margin-left:20px;
+form div {
+  width: 28vw;
+  min-width: 250px;
+  border-right: 20px solid transparent;
+  margin-left: 20px;
 }
 
 div.full-width,
-p.full-width{
-  width:70%;
-  padding-left:20px;
-  margin:0 auto;
+p.full-width {
+  width: 70%;
+  padding-left: 20px;
+  margin: 0 auto;
 }
-p.full-width{
-  color:#fff;
-  a{
+
+p.full-width {
+  color: #fff;
+  a {
     color: $yellow;
   }
   position:absolute;
@@ -91,33 +97,33 @@ p.full-width{
 
 
 #drop_file_zone {
-  background-color:#555;
-  opacity:0.7;
+  background-color: #555;
+  opacity: 0.7;
   border: $yellow 2px solid;
-  border-radius:4px;
-  min-width:200px;
+  border-radius: 4px;
+  min-width: 200px;
   width: 200px;
   height: 90px;
   padding: 8px;
   font-size: 18px;
   margin: 0 auto;
-  color:#fff;
-  p{
-    min-width:200px  !important;
-    padding:0px;
+  color: #fff;
+  p {
+    min-width: 200px !important;
+    padding: 0px;
     margin: 0px;
-    margin-left:-50px
+    margin-left: -50px
   }
-  input{
-    width:160px;
-    border:0px;
+  input {
+    width: 160px;
+    border: 0px;
     text-align: center
   }
   margin-bottom: 30px
 }
 
 #drag_upload_file {
-  width: 50%;
+  width: 25%;
   margin: 0 auto;
 }
 
@@ -154,3 +160,41 @@ input.btn {
   }
 }
 
+  img.profile_image{
+    width:30vw; 
+    
+  }
+
+dashboard {
+  display: flex;
+  flex-flow: row wrap;
+  width: 70vw;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: space-around;
+  margin-top: 10vh;
+  margin-bottom:2vh;
+
+
+
+
+  div {
+    width: 30%;
+    min-width: 250px;
+    height: 20vh;
+    margin-bottom:2vh;
+    background:#bfd7f8;
+    opacity:0.7;
+    min-height:200px;
+  }
+
+  h2{
+    width:100%;
+    background: $yellow;
+    margin-top:0px;
+    font-size:2.5vh;
+    padding:6px 0px 4px;
+    color:#000;
+  }
+
+}

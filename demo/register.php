@@ -3,12 +3,6 @@ session_start();
 $profile_image=$_SESSION["profile_image"]; 
 require_once "config.php";
 
-//echo "Session is ".$_SESSION["loggedin"]." profile name =".$profile_image;
-
-/*if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
-    exit;
-}*/
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
