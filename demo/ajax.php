@@ -1,5 +1,5 @@
 <?php
-$arr_file_types = ['image/png', 'image/gif', 'image/jpg', 'image/JPEG', 'image/JPG', 'image/PNG', 'image/GIF'];
+$arr_file_types = ['image/png', 'image/gif', 'image/jpg','image/JPEG','image/JPG','image/PNG', 'image/GIF',];
 
 if (!(in_array($_FILES['file']['type'], $arr_file_types))) {
 	echo "false";
@@ -12,8 +12,7 @@ if (!file_exists('images/profiles')) {
 
 }
 
-$profile_image = time() . $_FILES['file']['name'];
-move_uploaded_file($_FILES['file']['tmp_name'], 'images/profiles/' . $profile_image);
+move_uploaded_file($_FILES['file']['tmp_name'], 'images/profiles/' . time() . $_FILES['file']['name']);
 
-echo $profile_image." uploaded successfully.";
+echo "File uploaded successfully.";
 ?>

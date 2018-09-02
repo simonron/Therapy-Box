@@ -50,8 +50,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $confirm_password_err = "Password did not match.";
     }
   }
+?>
+ <script type="text/javascript">
 
+function validate()
+{
+if (document.myForm.emailcheck.value == "")
+{
+alert("Please enter your Email!");
+document.myForm.emailcheck.focus();
+return false;
+}
+else
+{
 
+/*validating email with strong regular expression(regex)*/
+var str=document.myForm.emailcheck.value
+/* This is the regular expression string to validate the email address
+
+Email address example : john@yahoo.com ,  john@yahoo.net.com , john.mary@yahoo.org ,
+
+john.mary@yahoo.rediff-.org ,  john.mary@yahoo.rediff-.org.com
+
+*/
+
+var filter = /^([w-]+(?:.[w-]+)*)@((?:[w-]+.)*w[w-]{0,66}).([com net org]{3}(?:.[a-z]{6})?)$/i
+if (!filter.test(str))
+{
+
+alert("Please enter a valid email address!")
+document.myForm.emailcheck.focus();
+return false;
+}
+if (document.myForm.msgbox.value == "")
+{
+alert("Please enter a message!");
+document.myForm.msgbox.focus();
+return false;
+}
+}
+
+return(true);
+}
+
+</script>
+ <?php
   // Validate email
   if(empty(trim($_POST["email"]))){
     $email_err = "Please enter an email address.";     
@@ -60,24 +103,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   } else{
     $email = trim($_POST["email"]);
   }
-    if($profile_image == ""){ 
-      $profile_image = "no avatar uploaded" };
+  
+
 
   // Check input errors before inserting in database
-  if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
-
+  if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+    $profile_image ="ELEPHANT !!!!";
+$param_profile_image = $profile_image; 
+    /*if($profile_image == "" ){$profile_image="no avatar uploaded";}*/
       // Prepare an insert statement
-      $sql = "INSERT INTO users (username, password, email, profile_image) VALUES (?, ?, ?, ?)";
+      $sql = "INSERT INTO users (username, password, profile_image, email) VALUES ('goose3','yack3','rabbit3','walruss')";
 
     if($stmt = mysqli_prepare($link, $sql)){
       // Bind variables to the prepared statement as parameters
-      mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password, $param_email, $param_profile_image);
+      mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
 
       // Set parameters
       $param_username = $username;
       $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
       $param_email = $email;
-      $param_profile_image = $profile_image;
+      
 
       // Attempt to execute the prepared statement
       if(mysqli_stmt_execute($stmt)){
