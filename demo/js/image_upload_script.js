@@ -19,6 +19,7 @@
 		if(file_obj != undefined) {
 		    var form_data = new FormData();                  
 		    form_data.append('file', file_obj);
+     
 			$.ajax({
 				type: 'POST',
 				url: 'ajax.php',
@@ -30,5 +31,6 @@
 					$('#selectfile').val('');
 				}
 			});
+       //console.log(form_data);
 		}
 	}

@@ -1,6 +1,8 @@
 <?php
 // Initialize the session
 session_start();
+$_SESSION["upload_target"] = 'photos';
+
 require_once "config.php";
 
 $username = htmlspecialchars($_SESSION["username"]);
@@ -28,12 +30,14 @@ include('header.php')
 
           <div id="add_photo">
             <h2>Add Photo</h2>
-            <div id="drop_file_zone" ondrop="upload_file2(event)" ondragover="return false">
+            <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+             <?  $file = 'images/photos/'.$photo; ?>
               <div id="drag_upload_file">
                 <p>Add picture</p>
                 <p>or</p>
                 <p><input type="button" value="Select File" onclick="file_explorer();"></p>
-                <input type="file" id="selectfile2">
+                
+                <input type="file" id="selectfile">
               </div>
             </div>
           </div>
@@ -69,11 +73,7 @@ include('header.php')
       </div>
         </photo_dashboard>
          <script>
-        function _isMobile() {
-          var isMobile = (/iphone|ipod|android|ie|blackberry|fennec/).test(navigator.userAgent.toLowerCase());
-          return isMobile;
-        }
-        mobile = _isMobile();
+
         // TILT action code
         var gama = null;
         var zone = null;
