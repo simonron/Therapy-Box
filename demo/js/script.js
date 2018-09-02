@@ -24,6 +24,7 @@
 				processData: false,
 				data: form_data,
 				success:function(response) {
+          if(response == 'false'){response="Upload failed. Please ensure the file is a jpg, png or gif"}
 					alert(response);
 					$('#selectfile').val('');
 				}
@@ -31,6 +32,3 @@
 		}
 	}
  
-
-
-document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')

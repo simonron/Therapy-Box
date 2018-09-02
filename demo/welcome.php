@@ -4,9 +4,10 @@ session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
+    header("location: index.php");
     exit;
 }
+echo "got this far";
 ?>
 
   <!DOCTYPE html>
@@ -28,7 +29,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <body>
    <div class= "internal_wrappper">
 <br>
-      <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+      <h1>Good day <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
 
       <p>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
@@ -43,6 +44,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
 
     </div>
+    
+<!--   <?php if(file_exists ( $profile_image )){
+  echo '<img src = images/$profile_image class = "profile_image">';};
+  ?>-->
+
     </div>
   </body>
 

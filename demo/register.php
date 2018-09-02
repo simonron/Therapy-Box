@@ -1,7 +1,7 @@
 <?php
 require_once "config.php";
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
+$username = $password = $confirm_password = $email = $profile_image = "";
+$username_err = $password_err = $confirm_password_err = $email_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   if(empty(trim($_POST["username"]))){
@@ -51,24 +51,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
   }
 
-  // Check input errors before inserting in database
-  if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
-    // Prepare an insert statement
-    $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+  // Validate email
+  if(empty(trim($_POST["email"]))){
+    $email_err = "Please enter an email address.";     
+  } elseif(strlen(trim($_POST["email"])) < 6){
+    $email_err = "email must be valid";
+  } else{
+    $email = trim($_POST["email"]);
+  }
+    if($profile_image == ""){ 
+      $profile_image = "no avatar uploaded" };
+
+  // Check input errors before inserting in database
+  if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
+
+      // Prepare an insert statement
+      $sql = "INSERT INTO users (username, password, email, profile_image) VALUES (?, ?, ?, ?)";
 
     if($stmt = mysqli_prepare($link, $sql)){
       // Bind variables to the prepared statement as parameters
-      mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+      mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password, $param_email, $param_profile_image);
 
       // Set parameters
       $param_username = $username;
       $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+      $param_email = $email;
+      $param_profile_image = $profile_image;
 
       // Attempt to execute the prepared statement
       if(mysqli_stmt_execute($stmt)){
-        // Redirect to login page
-        header("location: login.php");
+        // Redirect to index login page
+        header("location: index.php");
       } else{
         echo "There is a problem - please try again";
       }
@@ -79,24 +93,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   }
 
 
-  function filterEmail($field){
-    // Sanitize e-mail address
-    $field = filter_var(trim($field), FILTER_SANITIZE_EMAIL);
-
-    // Validate e-mail address
-    if(filter_var($field, FILTER_VALIDATE_EMAIL)){
-      return $field;
-    } else{
-      return FALSE;
-    }
-  }
 
 
 
 
-  // Close connection
-  mysqli_close($link);
-}
+     // Close connection
+     mysqli_close($link);
+     }
 ?>
 
 <!DOCTYPE html>
@@ -107,6 +110,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Register</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
   </head>
 
   <body>
@@ -125,50 +130,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
 
             <input type="text" name="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>">
-            <script type="text/javascript">
-
-function validate()
-{
-if (document.myForm.emailcheck.value == "")
-{
-alert("Please enter your Email!");
-document.myForm.emailcheck.focus();
-return false;
-}
-else
-{
-
-/*validating email with strong regular expression(regex)*/
-var str=document.myForm.emailcheck.value
-/* This is the regular expression string to validate the email address
-
-Email address example : john@yahoo.com ,  john@yahoo.net.com , john.mary@yahoo.org ,
-
-john.mary@yahoo.rediff-.org ,  john.mary@yahoo.rediff-.org.com
-
-*/
-
-var filter = /^([w-]+(?:.[w-]+)*)@((?:[w-]+.)*w[w-]{0,66}).([com net org]{3}(?:.[a-z]{6})?)$/i
-if (!filter.test(str))
-{
-
-alert("Please enter a valid email address!")
-document.myForm.emailcheck.focus();
-return false;
-}
-if (document.myForm.msgbox.value == "")
-{
-alert("Please enter a message!");
-document.myForm.msgbox.focus();
-return false;
-}
-}
-
-return(true);
-}
-
-</script>
-
             <span class="help-block "><?php echo $email_err; ?></span>
           </div>
 
@@ -184,11 +145,19 @@ return(true);
             <span class="help-block"><?php echo $confirm_password_err; ?></span>
           </div>
 
+          <div class="form-group full-width">
+            <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+              <div id="drag_upload_file">
+                <p>Add picture</p>
+                <p>or</p>
+                <p><input type="button" value="Select File" onclick="file_explorer();"></p>
+                <input type="file" id="selectfile">
+              </div>
 
+            </div>
+          </div>
           <div class="form-group full-width">
             <input type="submit" class="btn btn-primary" value="Submit">
-
-
           </div>
         </form>
       </div>
