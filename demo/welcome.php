@@ -8,24 +8,42 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 ?>
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; text-align: center; }
-    </style>
-</head>
-<body>
-    <div class="page-header">
-        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
-    </div>
-    <p>
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body>
+   <div class= "internal_wrappper">
+<br>
+      <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+
+      <p>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-    </p>
-</body>
-</html>
+      </p>
+      <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+        <div id="drag_upload_file">
+          <p>Drop a profile image file here</p>
+          <p>or</p>
+          <p><input type="button" value="Select File" onclick="file_explorer();"></p>
+          <input type="file" id="selectfile">
+        </div>
+
+    </div>
+    </div>
+  </body>
+
+  </html>

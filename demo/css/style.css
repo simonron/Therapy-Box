@@ -1,0 +1,54 @@
+body {
+  font: 14px sans-serif;
+  text-align: center;
+}
+
+.form-control,
+form-group {
+  background:none;
+  border:none;
+  box-shadow: none;
+  color:#fff;
+  border-bottom:1px #fff solid;
+  border-radius:0;
+  padding-left:0px;
+  padding-bottom:0px;
+}
+
+.bgContainer,
+.internal_wrappper {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../images/BGimage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  width: 350px;
+  padding: 20px;
+  margin: 0 10vw;
+}
+
+#drop_file_zone {
+  background-color: #EEE;
+  border: #999 5px dashed;
+  width: 290px;
+  height: 200px;
+  padding: 8px;
+  font-size: 18px;
+  margin: 0 auto;
+}
+
+#drag_upload_file {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#drag_upload_file p {
+  text-align: center;
+}
+
+#drag_upload_file #selectfile {
+  display: none;
+}

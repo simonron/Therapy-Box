@@ -1,6 +1,14 @@
 <?php
+// Destroy the session.
+session_destroy();
+// Unset all of the session variables
+
+$_SESSION = array();
+
 // Initialize the session
 session_start();
+
+// Unset all of the session variables
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -92,17 +100,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Hackathon Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
-</head>
-<body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body>
+   <div class= "internal_wrappper">
+       <div class="wrapper">
+        <h2>Hackathon</h2>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
@@ -117,8 +124,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            <p>New to Hackathon? <a href="index.php">Sign up</a>.</p>
         </form>
     </div>    
+    </div>
 </body>
 </html>
