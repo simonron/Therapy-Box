@@ -14,5 +14,6 @@ if (!file_exists('images/profiles')) {
 
 move_uploaded_file($_FILES['file']['tmp_name'], 'images/profiles/' . time() . $_FILES['file']['name']);
 
-echo "File uploaded successfully.";
+echo $_FILES['file']['name']." uploaded successfully.";
+$profile_image = $_FILES['file']['name'];
 ?>
