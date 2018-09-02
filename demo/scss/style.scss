@@ -225,3 +225,45 @@ dashboard {
   
   
 }
+
+/******************PHOTOS**********************/
+
+div#photos{
+  position:relative;
+}
+ 
+  
+
+div#box {
+  position:absolute;
+  margin-top:-7px;
+  width:100%;
+  margin-left:-50%;
+      
+    }
+
+    div.slide img {
+      position: absolute;
+      top: 0px;
+      background: transparent;
+      background-size: cover;
+      width: 100%;
+    }
+
+    h1 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      text-align: center;
+      font-size: 100px;
+      color: #fff;
+      Display:none;
+    }
+
+
+    div.model_image img {
+      position: absolute;
+      top: 0 px;
+      background: transparent;
+      background-size: cover;
+    }

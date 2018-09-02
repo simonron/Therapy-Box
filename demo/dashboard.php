@@ -74,8 +74,28 @@ if (mysqli_num_rows($result) > 0) {
           <div>
             <h2>Sport</h2>
           </div>
-          <div>
+          <div id="photos">
             <h2>Photos</h2>
+              <div id="box">
+    <? $dir="images/photos"; $handle=opendir($dir); ?>
+      <? $count =0;
+      while ($file = readdir($handle)) {
+        if ($file<>".") {
+          if ($file<>".."){
+            if ($file<>".DS_Store"){
+              $count+=1;
+              $slide="$file";
+          echo "<div class='slide container".$count."'>";
+          echo  "<img src='images/photos/".$slide."'>";
+          echo "<h1>".$count."</h1>";
+          echo "</div>";
+            }
+          }
+        }
+      }
+      closedir($handle);
+      ?>
+  </div>
           </div>
           <div>
             <h2>Tasks</h2>
@@ -103,21 +123,20 @@ if (mysqli_num_rows($result) > 0) {
 
           function showPosition(position) {
             //var test_display = document.getElementById("test_display");
-            console.log("Latitude: " + position.coords.latitude +
-              " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Longitude: " + position.coords.longitude);
+            ////console.log("Latitude: " + position.coords.latitude + !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Longitude: " + position.coords.longitude);
             //test_display.innerHTML = "Latitude: " + position.coords.latitude +
             "<br>Longitude: " + position.coords.longitude;
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
 
             jsonCoordURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&key=AIzaSyAco2DDdmDtvlETyITe9KvFGNDPOLFPEu4';
-            console.log("jsonCoordURL = " + jsonCoordURL);
+            //console.log("jsonCoordURL = " + jsonCoordURL);
             json_geo_list = getJSON(jsonCoordURL)
-            console.log("~~~~~~~~~~~~~~~~~~~~~~~~json_geo_list = " + json_geo_list);
+            //console.log("~~~~~~~~~~~~~~~~~~~~~~~~json_geo_list = " + json_geo_list);
             var $obj = JSON.parse(json_geo_list);
 
             x = 0;
-            //console.log(x);
+            ////console.log(x);
             txt = x;
             /*xmlhttp.onreadystatechange = function() {*/
             //if (this.readyState == 4 && this.status == 200) {
@@ -134,11 +153,11 @@ if (mysqli_num_rows($result) > 0) {
               }
             }
 
-            console.log(JSON.stringify($obj));
+            //console.log(JSON.stringify($obj));
             //txt="frog";
             //document.getElementById("demo").innerHTML = txt;
 
-            console.log("!!!!!!!!!!!!" + $obj.results[0].address_components[3].short_name);
+            //console.log("!!!!!!!!!!!!" + $obj.results[0].address_components[3].short_name);
             geoLocation = $obj.results[0].address_components[3].short_name; //CITY!!
             document.getElementById("city").innerHTML = geoLocation;
 
@@ -146,18 +165,18 @@ if (mysqli_num_rows($result) > 0) {
 
             geo_weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + geoLocation + '&APPID=4d73012180703ba89ac49f61eb202d5f';
             resp = getJSON(geo_weatherURL);
-            console.log("resp geo_weatherURL = " + resp);
+            //console.log("resp geo_weatherURL = " + resp);
             // resp =  geo_weather;  
 
-            console.log("json returned as > " + resp);
+            //console.log("json returned as > " + resp);
             var $obj = JSON.parse(resp);
-            console.log(JSON.stringify($obj));
-            //console.log("!!!!!!!!!!!!"+$obj.coord.lat);
-            console.log("!!!!!!!!!!!!" + $obj.weather[0].description);
+            //console.log(JSON.stringify($obj));
+            ////console.log("!!!!!!!!!!!!"+$obj.coord.lat);
+            //console.log("!!!!!!!!!!!!" + $obj.weather[0].description);
 
             weather_symbol_code = $obj.weather[0].description;
             icon = weather_symbol(weather_symbol_code);
-            console.log("icon = " + icon);
+            //console.log("icon = " + icon);
             document.getElementById("weather_condition").innerHTML = "<img src="+icon+">";
 
 
@@ -165,13 +184,13 @@ if (mysqli_num_rows($result) > 0) {
             temp = $obj.main.temp;
             tempC = temp - 273;
             document.getElementById("temp").innerHTML = tempC.toFixed(1) + " degrees";
-            console.log("!!!!!!!!!!!!" + temp);
-            console.log("!!!!!!!!!!!!" + tempC);
+            //console.log("!!!!!!!!!!!!" + temp);
+            //console.log("!!!!!!!!!!!!" + tempC);
 
             /*   temp = $obj.main.temp;
                tempC = temp - 273;
-               console.log("!!!!!!!!!!!!" + temp);
-               console.log("!!!!!!!!!!!!" + tempC);*/
+               //console.log("!!!!!!!!!!!!" + temp);
+               //console.log("!!!!!!!!!!!!" + tempC);*/
 
 
 
@@ -197,15 +216,15 @@ if (mysqli_num_rows($result) > 0) {
 
 
           function alldone($obj) {
-            console.log("!!!!!!!!!!!!" + $obj.weather[0].description);
+            //console.log("!!!!!!!!!!!!" + $obj.weather[0].description);
             temp = $obj.main.temp;
             tempC = temp - 273;
-            console.log("!!!!!!!!!!!!" + temp);
-            console.log("!!!!!!!!!!!!" + tempC);
+            //console.log("!!!!!!!!!!!!" + temp);
+            //console.log("!!!!!!!!!!!!" + tempC);
           }
 
           function weather_symbol(symbol) {
-            console.log("symbol at func =" + symbol);
+            //console.log("symbol at func =" + symbol);
             switch (symbol) {
               case 'clear sky':
                 icon = icon('01d');
@@ -250,7 +269,7 @@ if (mysqli_num_rows($result) > 0) {
             }
 
             function icon(code) {
-              console.log("code at func icon = " + code);
+              //console.log("code at func icon = " + code);
               icon = "http://openweathermap.org/img/w/" + code + ".png";
               return icon;
             }
