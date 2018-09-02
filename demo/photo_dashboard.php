@@ -149,7 +149,7 @@ include('header.php')
             tilted = averageIt(pitch, flicker);
             //varies between 0 and 1
             // total range of possible tilt = 12
-            var number = 0;
+            var number = 1;
             var mobileRange = 18 / number_of_slides;
             var mobileZone = (tilted / mobileRange) - number_of_slides / 4;
             $Opacity = mobileZone + number_of_slides;
@@ -159,7 +159,7 @@ include('header.php')
             number = 1;
             RowNum = 1;
             while (number <= number_of_slides) {
-              if (RowNum % 6 == 0) {
+              if (number % 4 == 0) {
                 RowNum = 1
               };
               mixOpacity('div.container' + number, $Opacity - RowNum * 3)

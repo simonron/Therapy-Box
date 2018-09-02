@@ -251,13 +251,16 @@ div#photos {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-
+background: #f00;
+  opacity:.5;
 }
 
 
 div.slide {
   position: absolute;
   width: 40vw;
+  background: #0f0;
+
 }
 
 img {
@@ -266,25 +269,21 @@ img {
   top: 0px;
 }
 
-h1 {
-  position: absolute;
-  margin-left: 10vw;
-  top: 0%; //text-align: center;
-  font-size: 100px;
-  color: #fff;
-  display:none;
-}
 
 
 
 div#photos {
   position: relative;
+    background: #00f;
+
   div {
+    background: #000;
     position: absolute;
     margin-top: -7px;
     width: 100%;
     //margin-left: -50%;
-    
+      max-width:280px;
+
   }
 }
 
@@ -294,6 +293,7 @@ div.slide img {
   background: transparent;
   background-size: cover;
   width: 100%;
+  max-width:280px;
 }
   
 
@@ -323,7 +323,6 @@ div.model_image img {
   div.box {
     border: none;
     box-shadow: none;
-    margin-left: -18vw;
     height: 90vw !important;
   }
 
@@ -338,7 +337,7 @@ div.model_image img {
   }
 
   .slide_column {
-    width: 45vw;
+    //width: 30vw;
     height: 110%;
   }
 
