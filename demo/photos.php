@@ -1,5 +1,13 @@
-   <div id="box">
-    <? $dir="images/photos"; $handle=opendir($dir); ?>
+   <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+ 
+   
+      
+    <? 
+
+
+$dir="images/photos"; $handle=opendir($dir); ?>
       <? $count =0;
       while ($file = readdir($handle)) {
         if ($file<>".") {
@@ -17,4 +25,3 @@
       }
       closedir($handle);
       ?>
-  </div>

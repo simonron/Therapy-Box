@@ -39,6 +39,10 @@ input:-webkit-autofill {
 
 .bgContainer.dashboard {
   height: 100% !important; }
+  .bgContainer.dashboard #photos img {
+    max-width: 280px; }
+  .bgContainer.dashboard #photos h1 {
+    display: none; }
 
 .wrapper {
   padding-top: 20px;
@@ -143,11 +147,10 @@ dashboard {
   margin-bottom: 2vh; }
   dashboard > div {
     width: 30%;
-    min-width: 250px;
+    min-width: 320px;
     height: 20vh;
     margin-bottom: 2vh;
     background: #bfd7f8;
-    opacity: 0.7;
     min-height: 200px;
     position: relative;
     font-size: 20px; }
@@ -179,33 +182,65 @@ dashboard {
     transform: scale(3, 3); }
 
 /******************PHOTOS**********************/
-div#photos {
-  position: relative; }
-
-div#box {
-  position: absolute;
-  margin-top: -7px;
-  width: 100%;
-  margin-left: -50%; }
-
-div.slide img {
-  position: absolute;
-  top: 0px;
-  background: transparent;
-  background-size: cover;
-  width: 100%; }
-
-h1 {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  text-align: center;
-  font-size: 100px;
-  color: #fff;
-  Display: none; }
-
-div.model_image img {
-  position: absolute;
-  top: 0 px;
-  background: transparent;
-  background-size: cover; }
+.photo_dashboard {
+  height: 100%; }
+  .photo_dashboard .columns {
+    width: 100vw;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around; }
+  .photo_dashboard div.slide {
+    position: absolute;
+    width: 40vw; }
+  .photo_dashboard img {
+    background: transparent;
+    width: 100%;
+    top: 0px; }
+  .photo_dashboard h1 {
+    position: absolute;
+    margin-left: 10vw;
+    top: 0%;
+    font-size: 100px;
+    color: #fff; }
+  .photo_dashboard div#photos {
+    position: relative; }
+    .photo_dashboard div#photos div {
+      position: absolute;
+      margin-top: -7px;
+      width: 100%;
+      margin-left: -50%; }
+  .photo_dashboard div.slide img {
+    position: absolute;
+    top: 0px;
+    background: transparent;
+    background-size: cover;
+    width: 100%; }
+  .photo_dashboard h1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    font-size: 100px;
+    color: #fff;
+    Display: none; }
+  .photo_dashboard div.model_image img {
+    position: absolute;
+    top: 0 px;
+    background: transparent;
+    background-size: cover; }
+  .photo_dashboard #drop_file_zone p {
+    margin-left: -75px; }
+  .photo_dashboard div.box {
+    border: none;
+    box-shadow: none;
+    margin-left: -18vw;
+    height: 90vw !important; }
+  .photo_dashboard div.slide {
+    position: absolute; }
+  .photo_dashboard img {
+    background: transparent;
+    max-height: 100vh;
+    top: 0px; }
+  .photo_dashboard .slide_column {
+    width: 45vw;
+    height: 110%; }
