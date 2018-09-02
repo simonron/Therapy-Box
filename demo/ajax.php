@@ -10,17 +10,13 @@ if (!(in_array($_FILES['file']['type'], $arr_file_types))) {
 if (!file_exists('images/profiles')) {
 	mkdir('images', 0777);
   	mkdir('images/profiles', 0777);
-
 }
 
-move_uploaded_file($_FILES['file']['tmp_name'], 'images/profiles/' . time() . $_FILES['file']['name']);
+move_uploaded_file($_FILES['file']['tmp_name'], 'images/profiles/' .$_FILES['file']['name']);
 $profile_image = $_FILES['file']['name'];
 
 echo $profile_image ." uploaded successfully.";
 
-
-
 $_SESSION["profile_image"] = $profile_image ;
-$_SESSION["favcolor"] = $profile_image;
-$_SESSION["favanimal"] = $profile_image;
+
 ?>

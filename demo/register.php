@@ -1,12 +1,6 @@
 <?php
 session_start();
-// Echo session variables that were set on previous page
-echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
-echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
 $profile_image=$_SESSION["profile_image"]; 
-
-echo "@@@@@@@@@!!".$profile_image."!!!@@@@@@@@@@@@@@@";
-
 require_once "config.php";
 $username = $password = $confirm_password = $email = "";
 $username_err = $password_err = $confirm_password_err = $email_err = "";
@@ -40,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_stmt_close($stmt);
   }
 //$profile_image = $_SESSION['profile_image'];
-  echo $profile_image;
+
   // Validate password
   if(empty(trim($_POST["password"]))){
     $password_err = "Please enter a password.";     

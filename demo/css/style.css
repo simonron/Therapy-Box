@@ -73,13 +73,27 @@ p.full-width {
     color: #fee47d; }
 
 #drop_file_zone {
-  background-color: #EEE;
-  border: #999 5px dashed;
-  width: 290px;
-  height: 200px;
+  background-color: #555;
+  opacity: 0.7;
+  border: #fee47d 2px solid;
+  border-radius: 4px;
+  min-width: 200px;
+  width: 200px;
+  height: 90px;
   padding: 8px;
   font-size: 18px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  color: #fff;
+  margin-bottom: 30px; }
+  #drop_file_zone p {
+    min-width: 200px  !important;
+    padding: 0px;
+    margin: 0px;
+    margin-left: -50px; }
+  #drop_file_zone input {
+    width: 160px;
+    border: 0px;
+    text-align: center; }
 
 #drag_upload_file {
   width: 50%;
