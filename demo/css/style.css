@@ -39,10 +39,6 @@ input:-webkit-autofill {
 
 .bgContainer.dashboard {
   height: 100% !important; }
-  .bgContainer.dashboard #photos img {
-    max-width: 280px; }
-  .bgContainer.dashboard #photos h1 {
-    display: none; }
 
 .wrapper {
   padding-top: 20px;
@@ -147,8 +143,8 @@ dashboard {
   margin-bottom: 2vh; }
   dashboard > div {
     width: 30%;
-    min-width: 320px;
-    height: 20vh;
+    min-width: 280px;
+    max-height: 280px;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -180,49 +176,53 @@ dashboard {
     color: #000; }
   dashboard div#weather_condition img {
     transform: scale(3, 3); }
+  dashboard div#photos {
+    position: relative; }
+    dashboard div#photos div {
+      position: absolute;
+      margin-top: -7px;
+      width: 100%; }
+    dashboard div#photos img {
+      max-width: 280px;
+      overflow: hidden; }
 
 /******************PHOTOS**********************/
 .photo_dashboard {
   height: 100%; }
   .photo_dashboard .columns {
-    width: 100vw;
+    width: 900px;
+    margin:0 auto;
+    padding:0px;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around; }
-  .photo_dashboard div.slide {
+    justify-content: space-around;
+     }
+  .photo_dashboard .slide_column{
     position: absolute;
-    width: 40vw; }
+    width: 280px;
+    height:280px;
+    background: #0f0;
+border:solid 1px #000;
+}
   .photo_dashboard img {
     background: transparent;
     width: 100%;
-    top: 0px; }
-  .photo_dashboard h1 {
-    position: absolute;
-    margin-left: 10vw;
-    top: 0%;
-    font-size: 100px;
-    color: #fff; }
-  .photo_dashboard div#photos {
-    position: relative; }
-    .photo_dashboard div#photos div {
-      position: absolute;
-      margin-top: -7px;
-      width: 100%;
-      margin-left: -50%; }
+    top: 0px; 
+    margin-left:-50%}
+
+  .photo_dashboard column {
+    background: #00f; }
+    
+
   .photo_dashboard div.slide img {
     position: absolute;
     top: 0px;
     background: transparent;
     background-size: cover;
-    width: 100%; }
-  .photo_dashboard h1 {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    font-size: 100px;
-    color: #fff;
-    Display: none; }
+    width: 100%;
+    max-width: 280px; }
+
+
   .photo_dashboard div.model_image img {
     position: absolute;
     top: 0 px;
@@ -233,7 +233,6 @@ dashboard {
   .photo_dashboard div.box {
     border: none;
     box-shadow: none;
-    margin-left: -18vw;
     height: 90vw !important; }
   .photo_dashboard div.slide {
     position: absolute; }
@@ -242,5 +241,4 @@ dashboard {
     max-height: 100vh;
     top: 0px; }
   .photo_dashboard .slide_column {
-    width: 45vw;
     height: 110%; }

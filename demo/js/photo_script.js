@@ -127,7 +127,7 @@ var number_of_slides = 10;
       var relX = e.pageX + range;
       var Mpos = e.pageX - boxLeft;
       var zone = Mpos / range;
-      OpTemp = number_of_slides - zone;
+      OpTemp = zone + number_of_slides/2;
       number = 1;
       
       while (number <= number_of_slides) {

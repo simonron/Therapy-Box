@@ -49,14 +49,6 @@ input:-webkit-autofill {
 
 .bgContainer.dashboard {
   height: 100% !important;
-  #photos {
-    img{
-    max-width:280px;
-  }
-    h1{
-      display:none;
-    }
-  }
 }
 
 .wrapper {
@@ -188,8 +180,8 @@ dashboard {
 
   > div {
     width: 30%;
-    min-width: 320px;
-    height: 20vh;
+    min-width: 280px;
+    max-height: 280px;;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -231,6 +223,22 @@ dashboard {
   }
 
 
+
+div#photos {
+  position: relative;
+  div {
+    position: absolute;
+    margin-top: -7px;
+    width: 100%;
+    //margin-left: -50%;
+  }
+  img {
+    max-width:280px;
+    overflow:hidden;
+  }
+}
+  
+
 }
 
 /******************PHOTOS**********************/
@@ -243,13 +251,16 @@ dashboard {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-
+background: #f00;
+  opacity:.5;
 }
 
 
 div.slide {
   position: absolute;
   width: 40vw;
+  background: #0f0;
+
 }
 
 img {
@@ -258,23 +269,21 @@ img {
   top: 0px;
 }
 
-h1 {
-  position: absolute;
-  margin-left: 10vw;
-  top: 0%; //text-align: center;
-  font-size: 100px;
-  color: #fff;
-}
 
 
 
 div#photos {
   position: relative;
+    background: #00f;
+
   div {
+    background: #000;
     position: absolute;
     margin-top: -7px;
     width: 100%;
-    margin-left: -50%;
+    //margin-left: -50%;
+      max-width:280px;
+
   }
 }
 
@@ -284,7 +293,9 @@ div.slide img {
   background: transparent;
   background-size: cover;
   width: 100%;
+  max-width:280px;
 }
+  
 
 h1 {
   position: absolute;
@@ -312,7 +323,6 @@ div.model_image img {
   div.box {
     border: none;
     box-shadow: none;
-    margin-left: -18vw;
     height: 90vw !important;
   }
 
@@ -327,7 +337,7 @@ div.model_image img {
   }
 
   .slide_column {
-    width: 45vw;
+    //width: 30vw;
     height: 110%;
   }
 
