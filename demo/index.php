@@ -1,4 +1,4 @@
-       <div id="demo">change this</div>
+
 <?php
 // Destroy the session.
 session_destroy();
@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username_err = "No account found with that username.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "There is a problem";
             }
         }
         
@@ -134,60 +134,63 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <p class= "full-width">New to Hackathon? <a href="register.php">Sign up</a>.</p>
         </form>
     </div> 
-    <?php
+         <div id="demo">change this</div>  
+    <script>
+   function getJSON(url) {
+        var resp ;
+        var xmlHttp ;
+
+        resp  = '' ;
+        xmlHttp = new XMLHttpRequest();
+
+        if(xmlHttp != null)
+        {
+            xmlHttp.open( "GET", url, false );
+            xmlHttp.send( null );
+            resp = xmlHttp.responseText;
+        }
+
+        return resp ;
+    }
+      
+      var gjson ;
+resp = getJSON('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=4d73012180703ba89ac49f61eb202d5f') ;
+       console.log("json returned as > "+resp);
+      var $obj = JSON.parse(resp);
+      console.log(JSON.stringify($obj));
+      //console.log("!!!!!!!!!!!!"+$obj.coord.lat);
+      console.log("!!!!!!!!!!!!"+$obj.weather[0].description);
+      temp = $obj.main.temp;
+      tempC = temp-273;
+      console.log("!!!!!!!!!!!!"+temp);
+      console.log("!!!!!!!!!!!!"+tempC);
+
 
      
-     //api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=4d73012180703ba89ac49f61eb202d5f
-     
-    $request = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=4d73012180703ba89ac49f61eb202d5f');
-     //$json=$request;
-     echo"<br>NEW STUFF next";
-    //$response  = file_get_contents('index.php');
-          //print_r($response);
-echo"<br> jsonobj output is ---";
-    $jsonobj  = json_decode($request,true);
-    print_r($jsonobj);
-     
-     
-     /*$json = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=4d73012180703ba89ac49f61eb202d5f');
-*/
-$data = json_decode($jsonobj,true);
-
-     print_r($data);
-
-
-$weather = $data['weather'][0][description];
-//$temperature = $data['weather'][1]['main'][0][temp];
-
-echo "<pre>";
-echo"Weather<br>";
-print_r($weather);
-  
-     
-$bit = base;
-     
-$output = $data[$bit][0];
-echo "<pre>";
-echo $output."<br>";
-//print_r($temperature);
-?>
-
+     </script>
     
       <?php echo($data['weather'][0][description]) ?>
        <?php   print_r($data); ?>
        <script>
           x = 0;
-           console.log(x);
+           //console.log(x);
         txt = x;
 /*xmlhttp.onreadystatechange = function() {*/
     //if (this.readyState == 4 && this.status == 200) {
-        myObj = JSON.parse(<?php echo("$data") ?>);
+        myObj = JSON.parse(resp);
         
        
-        //for (x in myObj) {
-          //  txt += myObj[x].name + "<br>";
+        for (x in myObj) {
+            txt += myObj[x] + "<br>"
+          for (y in myObj[x]) {;
+          txt += myObj[x][y] + "<br>"
+                   for (z in myObj[x][y]) {;
+          txt += myObj[x][y][z] + "<br>"                  
+                              }
+                              }
           
-        //}
+        }
+         console.log(JSON.stringify($obj));
       //txt="frog";
         document.getElementById("demo").innerHTML = txt;
     

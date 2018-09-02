@@ -1,5 +1,8 @@
 https://api.worldweatheronline.com/free/v2/weather.ashx?q=new+york&num_of_days=5&key=4d73012180703ba89ac49f61eb202d5f&tp=24&format=json
 
+https://api.worldweatheronline.com/free/v2/weather.ashx?q=new+york&num_of_days=5&key=6617543d6ea845ceb2e210756182508 &tp=24&format=json
+
+api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=6617543d6ea845ceb2e210756182508
 
 
 
