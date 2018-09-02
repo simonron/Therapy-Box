@@ -2,8 +2,11 @@
 session_start();
 $profile_image=$_SESSION["profile_image"]; 
 require_once "config.php";
-$username = $password = $confirm_password = $email = "";
-$username_err = $password_err = $confirm_password_err = $email_err = "";
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: welcome.php");
+    exit;
+}
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   if(empty(trim($_POST["username"]))){
@@ -162,7 +165,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <div class="bgContainer">
         <div class="wrapper">
           <h2>Hackathon</h2>
-          <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
+          <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post", $_SESSION["loggedin"] = true>
 
 
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
