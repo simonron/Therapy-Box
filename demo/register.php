@@ -1,6 +1,14 @@
 <?php
+session_start();
+// Echo session variables that were set on previous page
+echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
+echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
+$profile_image=$_SESSION["profile_image"]; 
+
+echo "@@@@@@@@@!!".$profile_image."!!!@@@@@@@@@@@@@@@";
+
 require_once "config.php";
-$username = $password = $confirm_password = $email = $profile_image = "";
+$username = $password = $confirm_password = $email = "";
 $username_err = $password_err = $confirm_password_err = $email_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -24,14 +32,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           $username = trim($_POST["username"]);
         }
       } else{
-        echo "There is a problem - please try again";
+        echo "There is a database problem - please try again";
       }
     }
 
     // Close statement
     mysqli_stmt_close($stmt);
   }
-
+//$profile_image = $_SESSION['profile_image'];
+  echo $profile_image;
   // Validate password
   if(empty(trim($_POST["password"]))){
     $password_err = "Please enter a password.";     
@@ -125,7 +134,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Redirect to index login page
         header("location: index.php");
       } else{
-        echo "There is a problem - can find a file - please try again";
+        echo "There is a problem - can't find a file - please try again";
       }
     }
 

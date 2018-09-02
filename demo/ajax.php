@@ -1,4 +1,5 @@
 <?php
+session_start();
 $arr_file_types = ['image/png', 'image/gif', 'image/jpg','image/JPEG','image/JPG','image/PNG', 'image/GIF',];
 
 if (!(in_array($_FILES['file']['type'], $arr_file_types))) {
@@ -13,7 +14,13 @@ if (!file_exists('images/profiles')) {
 }
 
 move_uploaded_file($_FILES['file']['tmp_name'], 'images/profiles/' . time() . $_FILES['file']['name']);
-
-echo $_FILES['file']['name']." uploaded successfully.";
 $profile_image = $_FILES['file']['name'];
+
+echo $profile_image ." uploaded successfully.";
+
+
+
+$_SESSION["profile_image"] = $profile_image ;
+$_SESSION["favcolor"] = $profile_image;
+$_SESSION["favanimal"] = $profile_image;
 ?>
