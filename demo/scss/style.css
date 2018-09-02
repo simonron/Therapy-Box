@@ -3,37 +3,69 @@ body {
   font: 14px sans-serif;
   text-align: center; }
 
-/* line 6, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 7, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 .form-control,
-input:-webkit-autofill {
+input {
   background: none !important;
   border: none;
-  box-shadow: none;
+  box-shadow: 0 0 0 0 transparent !important;
   color: #fff;
   border-bottom: 1px #fff solid;
   border-radius: 0;
   padding-left: 0px;
-  padding-bottom: 0px; }
+  padding-bottom: 0px;
+  display: none; }
 
-/* line 19, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 22, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+input:-webkit-autofill {
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0 0 0px 1000px #6fa3f7 inset !important;
+  border: none;
+  border-bottom: 1px #fff solid; }
+
+/* line 29, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+.btn-primary {
+  background: #ffde55 !important;
+  border-bottom: solid 0px transparent !important; }
+
+/* line 33, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+.btn-primary:hover {
+  color: #fff !important; }
+
+/* line 37, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 .bgContainer {
   height: 100vh;
   background-image: url("../images/BGimage.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
 
-/* line 26, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 44, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 .wrapper {
   width: 60vw;
-  padding: 20px;
+  padding-top: 20px;
   margin: 0 auto; }
-  /* line 31, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
-  .wrapper form {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 150px; }
+  /* line 50, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+  .wrapper span.help-block {
+    float: left; }
+  /* line 54, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+  .wrapper .container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 70vw;
+    margin: 0 auto;
+    justify-content: space-around; }
+  /* line 61, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+  .wrapper div {
+    border: solid 1px #000; }
+  /* line 65, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+  .wrapper form div {
+    width: 25vw; }
+  /* line 68, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+  .wrapper div.full-width {
+    width: 50%;
+    margin: 0 auto; }
 
-/* line 39, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 74, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 #drop_file_zone {
   background-color: #EEE;
   border: #999 5px dashed;
@@ -43,24 +75,24 @@ input:-webkit-autofill {
   font-size: 18px;
   margin: 0 auto; }
 
-/* line 49, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 84, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 #drag_upload_file {
   width: 50%;
   margin: 0 auto; }
 
-/* line 54, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 89, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 #drag_upload_file p {
   text-align: center; }
 
-/* line 58, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 93, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 #drag_upload_file #selectfile {
   display: none; }
 
-/* line 62, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 97, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 input::placeholder {
   color: #ccc !important; }
 
-/* line 66, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 101, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 input {
   color: #000 !important;
   background: none;
@@ -70,18 +102,18 @@ input {
   border-bottom: solid 1px #fff;
   width: 22em; }
 
-/* line 76, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 111, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 input.btn {
   border-radius: 30px;
   width: 200px;
   margin: 0 auto; }
-  /* line 80, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+  /* line 115, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
   input.btn .btn-primary {
     background-color: #fee47d !important;
     width: 150px;
     margin: 0 auto; }
 
-/* line 87, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
+/* line 122, /Users/Cyberman/Documents/NewMamp/demo/scss/style.scss */
 .full-width {
   /*  position: relative;
   width: 40vw;
