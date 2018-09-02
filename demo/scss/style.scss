@@ -178,7 +178,7 @@ dashboard {
 
 
 
-  div {
+  > div {
     width: 30%;
     min-width: 250px;
     height: 20vh;
@@ -186,6 +186,28 @@ dashboard {
     background:#bfd7f8;
     opacity:0.7;
     min-height:200px;
+    position:relative;
+    font-size:20px;
+  }
+  div#city{
+    position:absolute;
+    bottom:10px;
+    margin:0 auto;
+    width:100%;
+  }
+  div#temp{
+    position:absolute;
+    top:60px;
+    left:50%;
+    width:5em;
+    text-align:center;
+  }
+    div#weather_condition{
+    position:absolute;
+    top:60px;
+    left:20px;
+    width:5em;
+    text-align:center;
   }
 
   h2{
@@ -196,5 +218,10 @@ dashboard {
     padding:6px 0px 4px;
     color:#000;
   }
-
+  
+  div#weather_condition img{
+    transform: scale(3, 3);
+  }
+  
+  
 }

@@ -29,6 +29,9 @@ if (mysqli_num_rows($result) > 0) {
     <script type="text/javascript" src="js/script.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
     <link rel="stylesheet" href="css/style.css">
 
   </head>
@@ -39,7 +42,8 @@ if (mysqli_num_rows($result) > 0) {
         <br>
 
 
-        <h1>Good day <b><?php echo $username ?></b></h1> <!--<i class="wi wi-night-sleet"></i>
+        <h1>Good day <b><?php echo $username ?></b></h1>
+        <!--<i class="wi wi-night-sleet"></i>
 -->
         <p>
           <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
@@ -58,10 +62,11 @@ if (mysqli_num_rows($result) > 0) {
     ?>
         <dashboard>
 
-          <div>
+          <div id="weather">
             <h2>Weather</h2>
-            <?php echo $city ?>
-            
+            <div id="city">your current location</div>
+            <div id="temp"> Current Temperature</div>
+            <div id="weather_condition"> Weather icon</div>
           </div>
           <div>
             <h2>News</h2>
@@ -132,10 +137,13 @@ if (mysqli_num_rows($result) > 0) {
             console.log(JSON.stringify($obj));
             //txt="frog";
             //document.getElementById("demo").innerHTML = txt;
+
             console.log("!!!!!!!!!!!!" + $obj.results[0].address_components[3].short_name);
             geoLocation = $obj.results[0].address_components[3].short_name; //CITY!!
-$city ="unset as yet";
+            document.getElementById("city").innerHTML = geoLocation;
+
             $city = geoLocation;
+
             geo_weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q=' + geoLocation + '&APPID=4d73012180703ba89ac49f61eb202d5f';
             resp = getJSON(geo_weatherURL);
             console.log("resp geo_weatherURL = " + resp);
@@ -147,8 +155,16 @@ $city ="unset as yet";
             //console.log("!!!!!!!!!!!!"+$obj.coord.lat);
             console.log("!!!!!!!!!!!!" + $obj.weather[0].description);
 
+            weather_symbol_code = $obj.weather[0].description;
+            icon = weather_symbol(weather_symbol_code);
+            console.log("icon = " + icon);
+            document.getElementById("weather_condition").innerHTML = "<img src="+icon+">";
+
+
+
             temp = $obj.main.temp;
             tempC = temp - 273;
+            document.getElementById("temp").innerHTML = tempC.toFixed(1) + " degrees";
             console.log("!!!!!!!!!!!!" + temp);
             console.log("!!!!!!!!!!!!" + tempC);
 
@@ -186,6 +202,59 @@ $city ="unset as yet";
             tempC = temp - 273;
             console.log("!!!!!!!!!!!!" + temp);
             console.log("!!!!!!!!!!!!" + tempC);
+          }
+
+          function weather_symbol(symbol) {
+            console.log("symbol at func =" + symbol);
+            switch (symbol) {
+              case 'clear sky':
+                icon = icon('01d');
+                return icon;
+                break;
+              case 'few clouds':
+                icon = icon('02d');
+                 return icon;
+                break;
+              case 'scattered clouds':
+                icon = icon('03d');
+                 return icon;
+                break;
+              case 'broken clouds':
+                icon = icon('04d');
+                 return icon;
+                break;
+              case 'shower rain':
+                icon = icon('09d');
+                 return icon;
+                break;
+              case 'rain':
+                icon = icon('10d');
+                 return icon;
+                break;
+              case 'thunderstorm':
+                icon = icon('11d');
+                 return icon;
+                break;
+              case 'snow':
+                icon = icon('13d');
+                 return icon;
+                break;
+              case 'mist':
+                icon = icon('50d');
+                 return icon;
+                break;
+              default:
+                icon = "no idea";
+                 return icon;
+                break;
+            }
+
+            function icon(code) {
+              console.log("code at func icon = " + code);
+              icon = "http://openweathermap.org/img/w/" + code + ".png";
+              return icon;
+            }
+
           }
 
         </script>
