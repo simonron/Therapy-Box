@@ -180,8 +180,8 @@ dashboard {
 
   > div {
     width: 30%;
-    min-width: 320px;
-    height: 20vh;
+    min-width: 280px;
+    max-height: 280px;;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -223,6 +223,22 @@ dashboard {
   }
 
 
+
+div#photos {
+  position: relative;
+  div {
+    position: absolute;
+    margin-top: -7px;
+    width: 100%;
+    //margin-left: -50%;
+  }
+  img {
+    max-width:280px;
+    overflow:hidden;
+  }
+}
+  
+
 }
 
 /******************PHOTOS**********************/
@@ -256,6 +272,7 @@ h1 {
   top: 0%; //text-align: center;
   font-size: 100px;
   color: #fff;
+  display:none;
 }
 
 
@@ -266,7 +283,8 @@ div#photos {
     position: absolute;
     margin-top: -7px;
     width: 100%;
-    margin-left: -50%;
+    //margin-left: -50%;
+    
   }
 }
 
@@ -277,6 +295,7 @@ div.slide img {
   background-size: cover;
   width: 100%;
 }
+  
 
 h1 {
   position: absolute;

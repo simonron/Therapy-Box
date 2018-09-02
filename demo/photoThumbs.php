@@ -1,16 +1,16 @@
-   <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/photo_script.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/photo_script.js"></script>
 
-                <link rel="stylesheet" href="css/style.css">
- 
-   
-      
-    <? 
+<link rel="stylesheet" href="css/style.css">
+
+
+
+<? 
 
 
 $dir="images/photos"; $handle=opendir($dir); ?>
-      <? $count =0;
+  <? $count =0;
       while ($file = readdir($handle)) {
         if ($file<>".") {
           if ($file<>".."){
@@ -19,7 +19,6 @@ $dir="images/photos"; $handle=opendir($dir); ?>
               $slide="$file";
           echo "<div class='slide container".$count."'>";
           echo  "<img src='images/photos/".$slide."'>";
-          echo "<h1>".$count."</h1>";
           echo "</div>";
             }
           }

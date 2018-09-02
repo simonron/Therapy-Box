@@ -143,8 +143,8 @@ dashboard {
   margin-bottom: 2vh; }
   dashboard > div {
     width: 30%;
-    min-width: 320px;
-    height: 20vh;
+    min-width: 280px;
+    max-height: 280px;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -176,6 +176,15 @@ dashboard {
     color: #000; }
   dashboard div#weather_condition img {
     transform: scale(3, 3); }
+  dashboard div#photos {
+    position: relative; }
+    dashboard div#photos div {
+      position: absolute;
+      margin-top: -7px;
+      width: 100%; }
+    dashboard div#photos img {
+      max-width: 280px;
+      overflow: hidden; }
 
 /******************PHOTOS**********************/
 .photo_dashboard {
@@ -197,14 +206,14 @@ dashboard {
     margin-left: 10vw;
     top: 0%;
     font-size: 100px;
-    color: #fff; }
+    color: #fff;
+    display: none; }
   .photo_dashboard div#photos {
     position: relative; }
     .photo_dashboard div#photos div {
       position: absolute;
       margin-top: -7px;
-      width: 100%;
-      margin-left: -50%; }
+      width: 100%; }
   .photo_dashboard div.slide img {
     position: absolute;
     top: 0px;
