@@ -1,6 +1,6 @@
 <?php
 session_start();
-$arr_file_types = ['image/png', 'image/gif', 'image/jpg','image/JPEG','image/JPG','image/PNG', 'image/GIF',];
+$arr_file_types = ['image/png', 'image/gif', 'image/jpeg'];
 
 if (!(in_array($_FILES['file']['type'], $arr_file_types))) {
 	echo "false";
