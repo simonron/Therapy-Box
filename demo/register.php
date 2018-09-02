@@ -2,6 +2,9 @@
 session_start();
 $profile_image=$_SESSION["profile_image"]; 
 require_once "config.php";
+
+echo "Session is ".$_SESSION["loggedin"]." profile name =".$profile_image;
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: welcome.php");
     exit;
@@ -165,7 +168,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <div class="bgContainer">
         <div class="wrapper">
           <h2>Hackathon</h2>
-          <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post", $_SESSION["loggedin"] = true>
+          <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post"; $_SESSION["loggedin"] = true;header("location: welcome.php");>
 
 
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
