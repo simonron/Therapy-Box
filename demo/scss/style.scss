@@ -48,7 +48,7 @@ input:-webkit-autofill {
 }
 
 .bgContainer.dashboard {
- height: 100% !important;
+  height: 100% !important;
 }
 
 .wrapper {
@@ -160,10 +160,10 @@ input.btn {
   }
 }
 
-  img.profile_image{
-    width:30vw; 
-    
-  }
+img.profile_image {
+  width: 30vw;
+
+}
 
 dashboard {
   display: flex;
@@ -173,92 +173,154 @@ dashboard {
   margin: 0 auto;
   justify-content: space-around;
   margin-top: 10vh;
-  margin-bottom:2vh;
+  margin-bottom: 2vh;
 
 
 
 
   > div {
     width: 30%;
-    min-width: 320px; 
+    min-width: 320px;
     height: 20vh;
-    margin-bottom:2vh;
-    background:#bfd7f8;
-    min-height:200px;
-    position:relative;
-    font-size:20px;
+    margin-bottom: 2vh;
+    background: #bfd7f8;
+    min-height: 200px;
+    position: relative;
+    font-size: 20px;
   }
-  div#city{
-    position:absolute;
-    bottom:10px;
-    margin:0 auto;
-    width:100%;
+  div#city {
+    position: absolute;
+    bottom: 10px;
+    margin: 0 auto;
+    width: 100%;
   }
-  div#temp{
-    position:absolute;
-    top:60px;
-    left:50%;
-    width:5em;
-    text-align:center;
+  div#temp {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    width: 5em;
+    text-align: center;
   }
-    div#weather_condition{
-    position:absolute;
-    top:60px;
-    left:20px;
-    width:5em;
-    text-align:center;
+  div#weather_condition {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 5em;
+    text-align: center;
   }
 
-  h2{
-    width:100%;
+  h2 {
+    width: 100%;
     background: $yellow;
-    margin-top:0px;
-    font-size:2.5vh;
-    padding:6px 0px 4px;
-    color:#000;
+    margin-top: 0px;
+    font-size: 2.5vh;
+    padding: 6px 0px 4px;
+    color: #000;
   }
-  
-  div#weather_condition img{
+
+  div#weather_condition img {
     transform: scale(3, 3);
   }
-  
-  
+
+
 }
 
 /******************PHOTOS**********************/
+.photo_dashboard {
+   
+  height: 100%;
+  
+.columns {
+  width: 100vw;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 
-div#photos{
-  position:relative;
-div{
-  position:absolute;
-  margin-top:-7px;
-  width:100%;
-  margin-left:-50%;
+}
+
+
+div.slide {
+  position: absolute;
+  width: 40vw;
+}
+
+img {
+  background: transparent;
+  width: 100%;
+  top: 0px;
+}
+
+h1 {
+  position: absolute;
+  margin-left: 10vw;
+  top: 0%; //text-align: center;
+  font-size: 100px;
+  color: #fff;
+}
+
+
+
+div#photos {
+  position: relative;
+  div {
+    position: absolute;
+    margin-top: -7px;
+    width: 100%;
+    margin-left: -50%;
   }
-    }
+}
 
-    div.slide img {
-      position: absolute;
-      top: 0px;
-      background: transparent;
-      background-size: cover;
-      width: 100%;
-    }
+div.slide img {
+  position: absolute;
+  top: 0px;
+  background: transparent;
+  background-size: cover;
+  width: 100%;
+}
 
-    h1 {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      text-align: center;
-      font-size: 100px;
-      color: #fff;
-      Display:none;
-    }
+h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  font-size: 100px;
+  color: #fff;
+  Display: none;
+}
 
 
-    div.model_image img {
-      position: absolute;
-      top: 0 px;
-      background: transparent;
-      background-size: cover;
-    }
+div.model_image img {
+  position: absolute;
+  top: 0 px;
+  background: transparent;
+  background-size: cover;
+}
+
+
+  #drop_file_zone p {
+    margin-left: -75px;
+  }
+
+  div.box {
+    border: none;
+    box-shadow: none;
+    margin-left: -18vw;
+    height: 90vw !important;
+  }
+
+  div.slide {
+    position: absolute;
+  }
+
+  img {
+    background: transparent;
+    max-height: 100vh;
+    top: 0px;
+  }
+
+  .slide_column {
+    width: 45vw;
+    height: 110%;
+  }
+
+}

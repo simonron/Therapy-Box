@@ -121,6 +121,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <link rel="stylesheet" href="css/style.css">
       <script type="text/javascript" src="js/jquery.js"></script>
       <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/image_upload_script.js"></script>
+
     </head>
 
     <body>
