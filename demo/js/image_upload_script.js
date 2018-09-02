@@ -19,7 +19,6 @@
 		if(file_obj != undefined) {
 		    var form_data = new FormData();                  
 		    form_data.append('file', file_obj);
-     
 			$.ajax({
 				type: 'POST',
 				url: 'ajax.php',
@@ -31,6 +30,7 @@
 					$('#selectfile').val('');
 				}
 			});
-       //console.log(form_data);
 		}
 	}
+
+document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')

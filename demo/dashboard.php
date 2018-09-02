@@ -20,7 +20,6 @@ include('header.php')
 ?>
  <script type="text/javascript" src="js/photo_script.js"></script>
   <script type="text/javascript" src="js/weather_script.js"></script>
-  <script type="text/javascript" src="js/image_upload_script.js"></script>
 
   </head>
 
@@ -65,8 +64,8 @@ include('header.php')
           </div>
           <div id="photos">
             <a href="photo_dashboard.php">
-              <h2>Photos</h2> 
-              <?php include 'photoThumbs.php';?>
+              <h2>Photos</h2>
+              <?php include 'photos.php';?>
             </a>
           </div>
           <div>
