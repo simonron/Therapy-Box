@@ -149,12 +149,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             xmlHttp.send( null );
             resp = xmlHttp.responseText;
         }
-
         return resp ;
     }
       
-      var gjson ;
-resp = getJSON('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=4d73012180703ba89ac49f61eb202d5f') ;
+jsonURL = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=4d73012180703ba89ac49f61eb202d5f';
+resp = getJSON(jsonURL) ;
+geoLocation='Nottingham,uk';
+    geo_weatherURL='http://api.openweathermap.org/data/2.5/weather?q='+geoLocation+'&APPID=4d73012180703ba89ac49f61eb202d5f';
+      
+    console.log("@@@@@@ jsonURL = "+jsonURL);
+      console.log("@@@@@@ geo_weather = "+geo_weatherURL);
+      console.log("resp = "+resp);
+      resp = getJSON(geo_weatherURL) ;
+       console.log("resp geo_weatherURL = "+resp);
+ // resp =  geo_weather;  
+      
        console.log("json returned as > "+resp);
       var $obj = JSON.parse(resp);
       console.log(JSON.stringify($obj));
