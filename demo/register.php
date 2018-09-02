@@ -1,15 +1,7 @@
 <?php
-session_start();
-$profile_image=$_SESSION["profile_image"]; 
 require_once "config.php";
-
-echo "Session is ".$_SESSION["loggedin"]." profile name =".$profile_image;
-
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
-    exit;
-}
-
+$username = $password = $confirm_password = $email = "";
+$username_err = $password_err = $confirm_password_err = $email_err = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   if(empty(trim($_POST["username"]))){
@@ -32,14 +24,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           $username = trim($_POST["username"]);
         }
       } else{
-        echo "There is a database problem - please try again";
+        echo "There is a problem - please try again";
       }
     }
 
     // Close statement
     mysqli_stmt_close($stmt);
   }
-//$profile_image = $_SESSION['profile_image'];
 
   // Validate password
   if(empty(trim($_POST["password"]))){
@@ -59,43 +50,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $confirm_password_err = "Password did not match.";
     }
   }
-?>
-  <script type="text/javascript">
-    function validate() {
-      if (document.myForm.emailcheck.value == "") {
-        alert("Please enter your Email!");
-        document.myForm.emailcheck.focus();
-        return false;
-      } else {
 
-        /*validating email with strong regular expression(regex)*/
-        var str = document.myForm.emailcheck.value
-        /* This is the regular expression string to validate the email address
-
-        Email address example : john@yahoo.com ,  john@yahoo.net.com , john.mary@yahoo.org ,
-
-        john.mary@yahoo.rediff-.org ,  john.mary@yahoo.rediff-.org.com
-
-        */
-
-        var filter = /^([w-]+(?:.[w-]+)*)@((?:[w-]+.)*w[w-]{0,66}).([com net org]{3}(?:.[a-z]{6})?)$/i
-        if (!filter.test(str)) {
-
-          alert("Please enter a valid email address!")
-          document.myForm.emailcheck.focus();
-          return false;
-        }
-        if (document.myForm.msgbox.value == "") {
-          alert("Please enter a message!");
-          document.myForm.msgbox.focus();
-          return false;
-        }
-      }
-
-      return (true);
-    }
-  </script>
-  <?php
+/*  if(isset($_POST['submit'])){
+    header('Location: '.$_SERVER['index.php']);
+    exit;  
+}*/
   // Validate email
   if(empty(trim($_POST["email"]))){
     $email_err = "Please enter an email address.";     
@@ -104,37 +63,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   } else{
     $email = trim($_POST["email"]);
   }
-  
-
 
   // Check input errors before inserting in database
-  if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+  if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
+
     
-    //$email ="a sock";
-    $param_profileimage = $profile_image; 
-    $param_email = $email;
-    //$username ="give it a go3";
-    /*if($profile_image == "" ){$profile_image="no avatar uploaded";}*/
+    if (!isset($profile_image) || ($profile_image == "" )){$profile_image="no avatar uploaded";
+    $profile_image=""; }
+    
       // Prepare an insert statement
-      $sql = "INSERT INTO users (username, password, profile_image, email) VALUES (?,?,?,?)";
+      $sql = "INSERT INTO users (username, password, email, profile_image) VALUES (?, ?, ?, ?)";
 
     if($stmt = mysqli_prepare($link, $sql)){
       // Bind variables to the prepared statement as parameters
-      mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password, $param_profileimage,  $param_email);
+      mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password, $param_email, $param_profile_image);
 
       // Set parameters
       $param_username = $username;
       $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
       $param_email = $email;
-      $param_profileimage = $profile_image;
-      
+      $param_profile_image = $profile_image;
 
       // Attempt to execute the prepared statement
       if(mysqli_stmt_execute($stmt)){
         // Redirect to index login page
         header("location: index.php");
       } else{
-        echo "There is a problem - can't find a file - please try again";
+        echo "There is a new problem - please try again";
       }
     }
 
@@ -168,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <div class="bgContainer">
         <div class="wrapper">
           <h2>Hackathon</h2>
-          <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post"; $_SESSION["loggedin"] = true;header("location: welcome.php");>
+          <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
 
 
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
@@ -209,6 +164,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="form-group full-width">
               <input type="submit" class="btn btn-primary" value="Submit">
             </div>
+            <p class="full-width info">Already have an account? <a href="index.php">Login here</a>.</p>
           </form>
         </div>
       </div>
