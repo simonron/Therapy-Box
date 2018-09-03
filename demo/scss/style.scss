@@ -3,8 +3,8 @@ $yellow: #fee47d;
 body {
   font: 14px sans-serif;
   text-align: center;
-  width: 100vw;
-  overflow-x: hidden;
+  width:100vw;
+  overflow-x:hidden;
 }
 
 h2 {
@@ -164,8 +164,11 @@ input.btn {
 
 img.profile_image {
   width: 30vw;
-}
+  Height: 100%;
+  object-fit: cover;
+  object-position: 0 10%;
 
+}
 
 dashboard {
   display: flex;
@@ -178,9 +181,8 @@ dashboard {
   margin-bottom: 2vh;
 
   > div {
-    //width: 100%;
     min-width: 320px;
-    max-height: 310px;
+    height: 280px;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -221,94 +223,67 @@ dashboard {
     transform: scale(3, 3);
   }
 
-
-
+  
   div#photos { // main dashboard
     position: relative;
+          height: 280px;
+
     div {
       position: absolute;
       margin-top: -7px;
-      width: 100%; //margin-left: -50%;
+      width: 100%;
     }
     img {
-      max-width: 310px;
-       max-width: 310px;
-      overflow: hidden;
+      width: 320px;
+      height:280px;
+      object-fit: cover;
+      object-position: 0 10%;
     }
   }
 }
 
+  #drop_file_zone p {
+    margin-left: -75px;
+  }
 
 /******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
+.photo_dashboard {
 
-.photo_dashboard,
-.bgContainer {
-
-  height: 100vh;
+  height: 100%;
 
   .columns {
     display: flex;
     flex-flow: row wrap;
     width: 98vw;
     max-width: 900px;
-    justify-content: space-around; //background: #f00;
-    //opacity: .5;
+    justify-content: space-around;
+
     margin: 0 auto;
     position: relative;
   }
 
+  div.slide {
+    position: absolute;
+    width: 100%;
+  }
+
+  img {
+    background: transparent;
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius:4px;
+    object-position: 0 10%;
   
-  .column{
-    background: #000;
-     min-width: 400px;
-    position:relative;
   }
 
-  .slide{
-    overflow:hidden;
-
+  div.slide img {
+    position: absolute;
+    top: 0px;
+    background: transparent;
+    width: 100%;
+    min-width:280px;
   }
-  .col_0 {
-    background: #333;
-  }
-  .col_1 {
-    background: #4ee;
-  }
-  .col_2 {
-    background: #a94442;
-  }
-  .col_3 {
-    background: #fcc;
-  }
-  .col_4 {
-    background: #eef;
-  }
-
-  .mask{
-         height:320px;
-
-  }
-
-
-    img {
-      position: absolute;
-      background: transparent;
-      top: 0px;
-      max-width: 100%;
-      left: 0px;
-      width:320;
-      margin-top:-630px;
-      overflow:hidden;
-      
-    }
-/*
-
-
 
 
 
@@ -323,21 +298,37 @@ dashboard {
   }
 
 
-  div.model_image img {
-    position: absolute;
-    top: 0 px;
-    background: transparent;
-    background-size: cover;
-  }
-
-
-  #drop_file_zone p {
-    margin-left: -75px;
-  }
 
   div.box {
     border: none;
     box-shadow: none;
-    height: 90vw !important;
-  }*/
+    height: 100% !important;
+  }
+
+  div.slide{
+        //overflow:hidden;
+  }
+  
+  div.slide_column{
+    position:relative;
+    min-width:310px;
+    max-height: 320px;
+    overflow:hidden;
+    margin-bottom:20px;
+     
+    img{
+      position: absolute;
+      top: 0px;
+      max-width:100%;
+      left:0px;
+      object-fit: cover;
+      border-radius:4px;
+      object-position: 0 10%;
+    }
+  }
+
+  .slide_column {
+    height: 100vh;
+
+  }
 }

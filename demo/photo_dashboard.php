@@ -23,7 +23,6 @@ include('header.php')
 <script type="text/javascript" src="js/image_upload_script.js"></script>
 
 </head>
-
 <body>
   <div class="photo_dashboard bgContainer">
     <div class="internal_wrappper">
@@ -44,21 +43,10 @@ include('header.php')
       </div>
 
       <div class="columns box">
-        <? $colcount = 1;
-        while($colcount <= 4) {
-          echo "
-                  <div class='column mask'>
-                  <div class='slide_column col_$colcount'>
-                  <div class='slide container".$colcount."'>
-                  STUFF HERE</div></div>
-                  </div>";
-          $colcount++;
-        } ?> 
-        <div class="column">     
+        <div class="column">
           <div class="slide_column col_1">
-            <? $dir="images/photos/"; $handle=opendir($dir);        
-
-            $count =0; $colcount=1;
+            <? $dir="images/photos/"; $handle=opendir($dir); ?>
+            <? $count =0;$colcount=1;
             while ($file = readdir($handle)) {
               if ($file<>".") {
                 if ($file<>".."){
@@ -68,39 +56,31 @@ include('header.php')
                     echo "<div class='slide container".$count."'>";
                     echo  "<img src='images/photos/".$slide."'>";
                     echo "</div>";
-                    if($count%2 == 0){
+                    if($count%5 == 0){
                       $colcount+=1;
                       echo(" </div></div>       
                   <div class='column'>
                   <div class='slide_column col_$colcount'>");
                     }
+                    $target = htmlspecialchars($_SESSION["target"]);
+                    ;echo"<h1>ELEP  HANT".$target."</h1>";
                   }
                 }
               }
             }
-          
             closedir($handle);
             ?>
           </div>
         </div>
       </div>
-<!--      <? $colcount = 1;
-        while($colcount <= 4) {
-          echo "
-                  <div class='column'>
-                  <div class='slide_column col_$colcount'>
-                  <div class='slide container".$colcount."'>
-                  STUFF HERE</div></div>
-                  </div>";
-          $colcount++;
-        } ?>-->
       </photo_dashboard>
     <script>
+
       // TILT action code
       var gama = null;
       var zone = null;
       var ipad = "false";
-      var number_of_slides = <?php echo $count ?>;
+      var number_of_slides = <?php echo $count ;$_SESSION["target"] = $count;?>;
       var O = 0;
       var pitch = 0;
       var x = 0;
@@ -217,8 +197,7 @@ include('header.php')
         var boxLeft = $('.box').offset().left;
         var winWidth = $('.box').width() + boxLeft + 9;
         var boxWidth = (winWidth);
-        var range = (boxWidth / (number_of_slides - 1)) / 2;
-        var Mpos = boxWidth - (e.pageX - boxLeft) / 2;
+        var Mpos = boxWidth - (e.pageX - boxLeft)/2;
 
         autoPosFn(Mpos);
 
@@ -227,8 +206,8 @@ include('header.php')
 
 
       function autoPosFn(Mpos) {
-        var zone = Mpos / 200; // width of travel for one slide transition
-        $Opacity = zone;
+        var zone = Mpos / 200;// width of travel for one slide transition
+        $Opacity = (zone*4)-15; // width of travel for one slide transition
         number = 1;
         RowNum = 1;
         while (number <= number_of_slides) {
@@ -242,9 +221,9 @@ include('header.php')
         }
         //allways displayed slides for row of five
         /*      mixOpacity('div.container1', 1);
-                  mixOpacity('div.container4', 1);
-                  mixOpacity('div.container8', 1);
-                  mixOpacity('div.container12', 1);*/
+          mixOpacity('div.container4', 1);
+          mixOpacity('div.container8', 1);
+          mixOpacity('div.container12', 1);*/
       };
 
       function mixOpacity(div, Opacity) { // sets css opacity of DIV
@@ -252,5 +231,5 @@ include('header.php')
         $(div).attr("style", "opacity:" + Opacity);
         //console.log("mixOpacity Called");
       }
-
     </script>
+

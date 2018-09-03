@@ -1,11 +1,11 @@
-
+//MAIN DASHBOARD PHOTO SLIDER SCRIPT
 
     // TILT action code
     var gama = null;
     var zone = null;
     var ipad = "false";
-//var number_of_slides = "<?php echo $count ?>";
-var number_of_slides = 10;
+var number_of_slides = "<?php echo $count ?>";
+//var number_of_slides = 10;
     var O = 0;
     var pitch = 0;
     var x = 0;

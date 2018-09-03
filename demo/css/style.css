@@ -132,7 +132,10 @@ input.btn {
     margin: 0 auto; }
 
 img.profile_image {
-  width: 30vw; }
+  width: 30vw;
+  Height: 100%;
+  object-fit: cover;
+  object-position: 0 10%; }
 
 dashboard {
   display: flex;
@@ -145,7 +148,7 @@ dashboard {
   margin-bottom: 2vh; }
   dashboard > div {
     min-width: 320px;
-    max-height: 310px;
+    height: 280px;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -178,61 +181,25 @@ dashboard {
   dashboard div#weather_condition img {
     transform: scale(3, 3); }
   dashboard div#photos {
-    position: relative; }
+    position: relative;
+    height: 280px; }
     dashboard div#photos div {
       position: absolute;
       margin-top: -7px;
       width: 100%; }
     dashboard div#photos img {
-      max-width: 310px;
-      max-width: 310px;
-      overflow: hidden; }
+      width: 320px;
+      height: 280px;
+      object-fit: cover;
+      object-position: 0 10%; }
+
+#drop_file_zone p {
+  margin-left: -75px; }
 
 /******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-.photo_dashboard,
-.bgContainer {
-  height: 100vh;
-  /*
-  
-  
-  
-  
-  
-    h1 {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      text-align: center;
-      font-size: 100px;
-      color: #fff;
-      Display: none;
-    }
-  
-  
-    div.model_image img {
-      position: absolute;
-      top: 0 px;
-      background: transparent;
-      background-size: cover;
-    }
-  
-  
-    #drop_file_zone p {
-      margin-left: -75px;
-    }
-  
-    div.box {
-      border: none;
-      box-shadow: none;
-      height: 90vw !important;
-    }*/ }
-  .photo_dashboard .columns,
-  .bgContainer .columns {
+.photo_dashboard {
+  height: 100%; }
+  .photo_dashboard .columns {
     display: flex;
     flex-flow: row wrap;
     width: 98vw;
@@ -240,39 +207,47 @@ dashboard {
     justify-content: space-around;
     margin: 0 auto;
     position: relative; }
-  .photo_dashboard .column,
-  .bgContainer .column {
-    background: #000;
-    min-width: 400px;
-    position: relative; }
-  .photo_dashboard .slide,
-  .bgContainer .slide {
-    overflow: hidden; }
-  .photo_dashboard .col_0,
-  .bgContainer .col_0 {
-    background: #333; }
-  .photo_dashboard .col_1,
-  .bgContainer .col_1 {
-    background: #4ee; }
-  .photo_dashboard .col_2,
-  .bgContainer .col_2 {
-    background: #a94442; }
-  .photo_dashboard .col_3,
-  .bgContainer .col_3 {
-    background: #fcc; }
-  .photo_dashboard .col_4,
-  .bgContainer .col_4 {
-    background: #eef; }
-  .photo_dashboard .mask,
-  .bgContainer .mask {
-    height: 320px; }
-  .photo_dashboard img,
-  .bgContainer img {
+  .photo_dashboard div.slide {
     position: absolute;
+    width: 100%; }
+  .photo_dashboard img {
     background: transparent;
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 4px;
+    object-position: 0 10%; }
+  .photo_dashboard div.slide img {
+    position: absolute;
     top: 0px;
-    max-width: 100%;
-    left: 0px;
-    width: 320;
-    margin-top: -630px;
-    overflow: hidden; }
+    background: transparent;
+    width: 100%;
+    min-width: 280px; }
+  .photo_dashboard h1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    font-size: 100px;
+    color: #fff;
+    Display: none; }
+  .photo_dashboard div.box {
+    border: none;
+    box-shadow: none;
+    height: 100% !important; }
+  .photo_dashboard div.slide_column {
+    position: relative;
+    min-width: 310px;
+    max-height: 320px;
+    overflow: hidden;
+    margin-bottom: 20px; }
+    .photo_dashboard div.slide_column img {
+      position: absolute;
+      top: 0px;
+      max-width: 100%;
+      left: 0px;
+      object-fit: cover;
+      border-radius: 4px;
+      object-position: 0 10%; }
+  .photo_dashboard .slide_column {
+    height: 100vh; }
