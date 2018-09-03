@@ -32,8 +32,7 @@ include('header.php')
 
 
         <h1>Good day <b><?php echo $username ?></b></h1>
-        <!--<i class="wi wi-night-sleet"></i>
--->
+
         <p>
           <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
           <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>

@@ -178,7 +178,7 @@ dashboard {
   margin-bottom: 2vh;
 
   > div {
-    width: 100%;
+    //width: 100%;
     min-width: 320px;
     max-height: 310px;
     margin-bottom: 2vh;
@@ -223,7 +223,7 @@ dashboard {
 
 
 
-  div#photos {
+  div#photos { // main dashboard
     position: relative;
     div {
       position: absolute;
@@ -232,6 +232,7 @@ dashboard {
     }
     img {
       max-width: 310px;
+       max-width: 310px;
       overflow: hidden;
     }
   }

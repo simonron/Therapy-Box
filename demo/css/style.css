@@ -144,7 +144,6 @@ dashboard {
   margin-top: 10vh;
   margin-bottom: 2vh; }
   dashboard > div {
-    width: 100%;
     min-width: 320px;
     max-height: 310px;
     margin-bottom: 2vh;
@@ -185,6 +184,7 @@ dashboard {
       margin-top: -7px;
       width: 100%; }
     dashboard div#photos img {
+      max-width: 310px;
       max-width: 310px;
       overflow: hidden; }
 
