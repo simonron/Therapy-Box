@@ -266,12 +266,14 @@ dashboard {
   .column{
     background: #000;
      min-width: 400px;
-
     position:relative;
   }
 
+  .slide{
+    overflow:hidden;
 
-  .col_0 .slide{
+  }
+  .col_0 {
     background: #333;
   }
   .col_1 {
@@ -287,16 +289,22 @@ dashboard {
     background: #eef;
   }
 
+  .mask{
+         height:320px;
 
+  }
 
 
     img {
       position: absolute;
       background: transparent;
-      max-height: 100vh;
       top: 0px;
       max-width: 100%;
       left: 0px;
+      width:320;
+      margin-top:-630px;
+      overflow:hidden;
+      
     }
 /*
 

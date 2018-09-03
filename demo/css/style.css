@@ -245,8 +245,11 @@ dashboard {
     background: #000;
     min-width: 400px;
     position: relative; }
-  .photo_dashboard .col_0 .slide,
-  .bgContainer .col_0 .slide {
+  .photo_dashboard .slide,
+  .bgContainer .slide {
+    overflow: hidden; }
+  .photo_dashboard .col_0,
+  .bgContainer .col_0 {
     background: #333; }
   .photo_dashboard .col_1,
   .bgContainer .col_1 {
@@ -260,11 +263,16 @@ dashboard {
   .photo_dashboard .col_4,
   .bgContainer .col_4 {
     background: #eef; }
+  .photo_dashboard .mask,
+  .bgContainer .mask {
+    height: 320px; }
   .photo_dashboard img,
   .bgContainer img {
     position: absolute;
     background: transparent;
-    max-height: 100vh;
     top: 0px;
     max-width: 100%;
-    left: 0px; }
+    left: 0px;
+    width: 320;
+    margin-top: -630px;
+    overflow: hidden; }

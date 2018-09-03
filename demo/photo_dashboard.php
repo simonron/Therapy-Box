@@ -47,7 +47,7 @@ include('header.php')
         <? $colcount = 1;
         while($colcount <= 4) {
           echo "
-                  <div class='column'>
+                  <div class='column mask'>
                   <div class='slide_column col_$colcount'>
                   <div class='slide container".$colcount."'>
                   STUFF HERE</div></div>
@@ -68,7 +68,7 @@ include('header.php')
                     echo "<div class='slide container".$count."'>";
                     echo  "<img src='images/photos/".$slide."'>";
                     echo "</div>";
-                    if($count%5 == 0){
+                    if($count%2 == 0){
                       $colcount+=1;
                       echo(" </div></div>       
                   <div class='column'>
@@ -84,7 +84,16 @@ include('header.php')
           </div>
         </div>
       </div>
-
+<!--      <? $colcount = 1;
+        while($colcount <= 4) {
+          echo "
+                  <div class='column'>
+                  <div class='slide_column col_$colcount'>
+                  <div class='slide container".$colcount."'>
+                  STUFF HERE</div></div>
+                  </div>";
+          $colcount++;
+        } ?>-->
       </photo_dashboard>
     <script>
       // TILT action code
