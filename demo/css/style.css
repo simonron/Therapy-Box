@@ -190,31 +190,29 @@ dashboard {
 .photo_dashboard {
   height: 100%; }
   .photo_dashboard .columns {
-    width: 900px;
-    margin:0 auto;
-    padding:0px;
+    width: 100vw;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-     }
+    background: #f00;
+    opacity: .5; }
   .photo_dashboard div.slide {
     position: absolute;
-    width: 280px;
-    height:280px;
-    background: #0f0;
-border:solid 1px #000;
-}
+    width: 40vw;
+    background: #0f0; }
   .photo_dashboard img {
     background: transparent;
     width: 100%;
-    top: 0px; 
-    margin-left:-50%}
-
-  .photo_dashboard column {
+    top: 0px; }
+  .photo_dashboard div#photos {
     position: relative;
     background: #00f; }
-    
-
+    .photo_dashboard div#photos div {
+      background: #000;
+      position: absolute;
+      margin-top: -7px;
+      width: 100%;
+      max-width: 280px; }
   .photo_dashboard div.slide img {
     position: absolute;
     top: 0px;
@@ -222,8 +220,14 @@ border:solid 1px #000;
     background-size: cover;
     width: 100%;
     max-width: 280px; }
-
-
+  .photo_dashboard h1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    font-size: 100px;
+    color: #fff;
+    Display: none; }
   .photo_dashboard div.model_image img {
     position: absolute;
     top: 0 px;
