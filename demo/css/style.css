@@ -1,6 +1,8 @@
 body {
   font: 14px sans-serif;
-  text-align: center; }
+  text-align: center;
+  width: 100vw;
+  overflow-x: hidden; }
 
 h2 {
   color: #fff; }
@@ -142,9 +144,9 @@ dashboard {
   margin-top: 10vh;
   margin-bottom: 2vh; }
   dashboard > div {
-    width: 30%;
-    min-width: 280px;
-    max-height: 280px;
+    width: 100%;
+    min-width: 320px;
+    max-height: 310px;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -183,67 +185,86 @@ dashboard {
       margin-top: -7px;
       width: 100%; }
     dashboard div#photos img {
-      max-width: 280px;
+      max-width: 310px;
       overflow: hidden; }
 
 /******************PHOTOS**********************/
-.photo_dashboard {
-  height: 100%; }
-  .photo_dashboard .columns {
-    width: 100vw;
+/******************PHOTOS**********************/
+/******************PHOTOS**********************/
+/******************PHOTOS**********************/
+/******************PHOTOS**********************/
+/******************PHOTOS**********************/
+.photo_dashboard,
+.bgContainer {
+  height: 100vh;
+  /*
+  
+  
+  
+  
+  
+    h1 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      text-align: center;
+      font-size: 100px;
+      color: #fff;
+      Display: none;
+    }
+  
+  
+    div.model_image img {
+      position: absolute;
+      top: 0 px;
+      background: transparent;
+      background-size: cover;
+    }
+  
+  
+    #drop_file_zone p {
+      margin-left: -75px;
+    }
+  
+    div.box {
+      border: none;
+      box-shadow: none;
+      height: 90vw !important;
+    }*/ }
+  .photo_dashboard .columns,
+  .bgContainer .columns {
     display: flex;
     flex-flow: row wrap;
+    width: 98vw;
+    max-width: 900px;
     justify-content: space-around;
-    background: #f00;
-    opacity: .5; }
-  .photo_dashboard div.slide {
+    margin: 0 auto;
+    position: relative; }
+  .photo_dashboard .column,
+  .bgContainer .column {
+    background: #000;
+    min-width: 400px;
+    position: relative; }
+  .photo_dashboard .col_0,
+  .bgContainer .col_0 {
+    background: #333; }
+  .photo_dashboard .col_1,
+  .bgContainer .col_1 {
+    background: #4ee; }
+  .photo_dashboard .col_2,
+  .bgContainer .col_2 {
+    background: #a94442; }
+  .photo_dashboard .col_3,
+  .bgContainer .col_3 {
+    background: #fcc; }
+  .photo_dashboard .col_4,
+  .bgContainer .col_4 {
+    background: #eef; }
+  .photo_dashboard img,
+  .bgContainer img {
     position: absolute;
-    width: 40vw;
-    background: #0f0; }
-  .photo_dashboard img {
-    background: transparent;
-    width: 100%;
-    top: 0px; }
-  .photo_dashboard div#photos {
-    position: relative;
-    background: #00f; }
-    .photo_dashboard div#photos div {
-      background: #000;
-      position: absolute;
-      margin-top: -7px;
-      width: 100%;
-      max-width: 280px; }
-  .photo_dashboard div.slide img {
-    position: absolute;
-    top: 0px;
-    background: transparent;
-    background-size: cover;
-    width: 100%;
-    max-width: 280px; }
-  .photo_dashboard h1 {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    font-size: 100px;
-    color: #fff;
-    Display: none; }
-  .photo_dashboard div.model_image img {
-    position: absolute;
-    top: 0 px;
-    background: transparent;
-    background-size: cover; }
-  .photo_dashboard #drop_file_zone p {
-    margin-left: -75px; }
-  .photo_dashboard div.box {
-    border: none;
-    box-shadow: none;
-    height: 90vw !important; }
-  .photo_dashboard div.slide {
-    position: absolute; }
-  .photo_dashboard img {
     background: transparent;
     max-height: 100vh;
-    top: 0px; }
-  .photo_dashboard .slide_column {
-    height: 110%; }
+    top: 0px;
+    max-width: 100%;
+    left: 0px; }

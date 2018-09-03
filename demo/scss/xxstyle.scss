@@ -3,12 +3,10 @@ $yellow: #fee47d;
 body {
   font: 14px sans-serif;
   text-align: center;
-  width: 100vw;
-  overflow-x: hidden;
 }
 
 h2 {
-  color: #fff;
+  color: #fff; 
 }
 
 .form-control,
@@ -17,7 +15,7 @@ input {
   border: none;
   box-shadow: 0 0 0 0 transparent !important;
   color: #fff;
-  border-bottom: 1px #fff solid;
+  border-bottom: 1px #fff solid; 
   border-radius: 0;
   padding-left: 0px;
   padding-bottom: 0px;
@@ -164,8 +162,8 @@ input.btn {
 
 img.profile_image {
   width: 30vw;
-}
 
+}
 
 dashboard {
   display: flex;
@@ -177,10 +175,13 @@ dashboard {
   margin-top: 10vh;
   margin-bottom: 2vh;
 
+
+
+
   > div {
-    width: 100%;
+    width: 30%;
     min-width: 320px;
-    max-height: 310px;
+    height: 20vh;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -222,104 +223,78 @@ dashboard {
   }
 
 
+}
 
-  div#photos {
-    position: relative;
-    div {
-      position: absolute;
-      margin-top: -7px;
-      width: 100%; //margin-left: -50%;
-    }
-    img {
-      max-width: 310px;
-      overflow: hidden;
-    }
-  }
+/******************PHOTOS**********************/
+.photo_dashboard {
+   
+  height: 100%;
+  
+.columns {
+  width: 100vw;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
 }
 
 
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
-/******************PHOTOS**********************/
+div.slide {
+  position: absolute;
+  width: 40vw;
+}
 
-.photo_dashboard,
-.bgContainer {
+img {
+  background: transparent;
+  width: 100%;
+  top: 0px;
+}
 
-  height: 100vh;
-
-  .columns {
-    display: flex;
-    flex-flow: row wrap;
-    width: 98vw;
-    max-width: 900px;
-    justify-content: space-around; //background: #f00;
-    //opacity: .5;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  
-  .column{
-    background: #000;
-     min-width: 400px;
-
-    position:relative;
-  }
-
-
-  .col_0 {
-    background: #333;
-  }
-  .col_1 {
-    background: #4ee;
-  }
-  .col_2 {
-    background: #a94442;
-  }
-  .col_3 {
-    background: #fcc;
-  }
-  .col_4 {
-    background: #eef;
-  }
+h1 {
+  position: absolute;
+  margin-left: 10vw;
+  top: 0%; //text-align: center;
+  font-size: 100px;
+  color: #fff;
+}
 
 
 
-
-    img {
-      position: absolute;
-      background: transparent;
-      max-height: 100vh;
-      top: 0px;
-      max-width: 100%;
-      left: 0px;
-    }
-/*
-
-
-
-
-
-  h1 {
+div#photos {
+  position: relative;
+  div {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    font-size: 100px;
-    color: #fff;
-    Display: none;
+    margin-top: -7px;
+    width: 100%;
+    margin-left: -50%;
   }
+}
+
+div.slide img {
+  position: absolute;
+  top: 0px;
+  background: transparent;
+  background-size: cover;
+  width: 100%;
+}
+
+h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  font-size: 100px;
+  color: #fff;
+  Display: none;
+}
 
 
-  div.model_image img {
-    position: absolute;
-    top: 0 px;
-    background: transparent;
-    background-size: cover;
-  }
+div.model_image img {
+  position: absolute;
+  top: 0 px;
+  background: transparent;
+  background-size: cover;
+}
 
 
   #drop_file_zone p {
@@ -329,6 +304,23 @@ dashboard {
   div.box {
     border: none;
     box-shadow: none;
+    margin-left: -18vw;
     height: 90vw !important;
-  }*/
+  }
+
+  div.slide {
+    position: absolute;
+  }
+
+  img {
+    background: transparent;
+    max-height: 100vh;
+    top: 0px;
+  }
+
+  .slide_column {
+    width: 45vw;
+    height: 110%;
+  }
+
 }
