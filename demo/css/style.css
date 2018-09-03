@@ -245,8 +245,8 @@ dashboard {
     background: #000;
     min-width: 400px;
     position: relative; }
-  .photo_dashboard .col_0,
-  .bgContainer .col_0 {
+  .photo_dashboard .col_0 .slide,
+  .bgContainer .col_0 .slide {
     background: #333; }
   .photo_dashboard .col_1,
   .bgContainer .col_1 {
