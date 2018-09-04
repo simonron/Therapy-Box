@@ -182,7 +182,7 @@ dashboard {
 
   > div {
     min-width: 280px;
-    height: 280px;
+    height: 310px;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -226,7 +226,8 @@ dashboard {
   
   div#photos { // main dashboard
     position: relative;
-          height: 280px;
+    height: 280px;
+
 
     div {
       position: absolute;
@@ -238,6 +239,7 @@ dashboard {
       height:280px;
       object-fit: cover;
       object-position: 0 10%;
+          margin-top:-4px;
     }
   }
 }

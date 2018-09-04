@@ -148,7 +148,7 @@ dashboard {
   margin-bottom: 2vh; }
   dashboard > div {
     min-width: 280px;
-    height: 280px;
+    height: 310px;
     margin-bottom: 2vh;
     background: #bfd7f8;
     min-height: 200px;
@@ -191,7 +191,8 @@ dashboard {
       width: 280px;
       height: 280px;
       object-fit: cover;
-      object-position: 0 10%; }
+      object-position: 0 10%;
+      margin-top: -4px; }
 
 #drop_file_zone p {
   margin-left: -75px; }

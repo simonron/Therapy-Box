@@ -64,7 +64,7 @@ include('header.php')
           <div id="photos">
             <a href="photo_dashboard.php">
               <h2>Photos</h2> 
-              <?php include 'photoThumbs.php';?>
+              <?php include 'photoThumbSlider.php';?>
             </a>
           </div>
           <div>
