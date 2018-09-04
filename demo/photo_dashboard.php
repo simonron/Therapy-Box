@@ -198,16 +198,13 @@ include('header.php')
         var winWidth = $('.box').width() + boxLeft + 9;
         var boxWidth = (winWidth);
         var Mpos = boxWidth - (e.pageX - boxLeft)/2;
-
-        autoPosFn(Mpos);
-
-      });
+        var scale=(boxWidth/500);console.log(scale);
 
 
+  
 
-      function autoPosFn(Mpos) {
-        var zone = Mpos / 200;// width of travel for one slide transition
-        $Opacity = (zone*4)-15; // width of travel for one slide transition
+        var zone = ((Mpos / 200)*scale)-scale*3;// width of travel for one slide transition
+        $Opacity = zone; // width of travel for one slide transition
         number = 1;
         RowNum = 1;
         while (number <= number_of_slides) {
@@ -224,12 +221,12 @@ include('header.php')
           mixOpacity('div.container4', 1);
           mixOpacity('div.container8', 1);
           mixOpacity('div.container12', 1);*/
-      };
+      });
 
       function mixOpacity(div, Opacity) { // sets css opacity of DIV
-        console.log(div + " Opacity = " + Opacity);
+        //console.log(div + " Opacity = " + Opacity);
         $(div).attr("style", "opacity:" + Opacity);
         //console.log("mixOpacity Called");
-      }
+      };
     </script>
 
