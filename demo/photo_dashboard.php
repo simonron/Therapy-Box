@@ -224,10 +224,8 @@ include('header.php')
           //console.log("div.container" + number +" Opacity = "+($Opacity+RowNum-5 ));
         }
         //allways displayed slides for row of five
-        /*      mixOpacity('div.container1', 1);
-          mixOpacity('div.container4', 1);
-          mixOpacity('div.container8', 1);
-          mixOpacity('div.container12', 1);*/
+        mixOpacity('div.container5', 1);
+        mixOpacity('div.container3', 1);
       });
 
       function mixOpacity(div, Opacity) { // sets css opacity of DIV
