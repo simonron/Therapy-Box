@@ -46,7 +46,7 @@ include('header.php')
         <?php 
    if ($profile_image == ""){ 
      echo" You have not set a profile image";}else{
-    $file = 'images/profiles/'.$profile_image;
+    $file = "'images/profiles/".$profile_image."'";
    
   echo "<img class='profile_image' src = $file>";
 }    

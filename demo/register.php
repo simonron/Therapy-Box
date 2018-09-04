@@ -3,7 +3,7 @@ session_start();
 $profile_image=$_SESSION["profile_image"]; 
 $_SESSION["upload_target"] = 'profiles';
 require_once "config.php";
-echo"<h1>$profile_image</h1>";
+//echo"<h1>$profile_image</h1>";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -94,7 +94,7 @@ $profile_image = $_SESSION['profile_image'];
       if(mysqli_stmt_execute($stmt)){
         // Redirect to index login page
 
-       echo "<script type='text/javascript'>window.location.href = 'index.php';</script>";
+       echo "<script type='text/javascript'>window.location.href = 'dashboard.php';</script>";
         exit();
     }else{
         echo "There is a problem - can't find a file - please try again";

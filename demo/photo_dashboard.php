@@ -49,7 +49,9 @@ include('header.php')
       <div class="columns box">
         <div class="column">
           <div class="slide_column col_1">
-            <? $dir="images/photos/"; $handle=opendir($dir); ?>
+            <? $dir="images/photos/"; $handle=opendir($dir); 
+            $fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
+            $NumberSlidesInCols = (iterator_count($fi)/4)?>
             <? $count =0;$colcount=1;
             while ($file = readdir($handle)) {
               if ($file<>".") {
@@ -60,14 +62,15 @@ include('header.php')
                     echo "<div class='slide container".$count."'>";
                     echo  "<img src='images/photos/".$slide."'>";
                     echo "</div>";
-                    if($count%5 == 0){
+                    
+                    if($count%$NumberSlidesInCols == 0){ // number of slides per slot before move to next column
                       $colcount+=1;
+                      if($colcount ==5){$colcount=1;}// how many boxes/columns
                       echo(" </div></div>       
                   <div class='column'>
                   <div class='slide_column col_$colcount'>");
                     }
                     $target = htmlspecialchars($_SESSION["target"]);
-                    ;echo"<h1>ELEP  HANT".$target."</h1>";
                   }
                 }
               }

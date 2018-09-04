@@ -60,20 +60,18 @@ form {
 
 form div {
   width: 28vw;
-  min-width: 250px;
   border-right: 20px solid transparent;
   margin-left: 20px; }
 
 div.full-width,
 p.full-width {
   width: 70%;
-  padding-left: 20px;
   margin: 0 auto; }
 
 p.full-width {
   color: #fff;
   position: absolute;
-  bottom: 10vh; }
+  bottom: 30px; }
   p.full-width a {
     color: #fee47d; }
 
