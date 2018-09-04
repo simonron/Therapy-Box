@@ -229,4 +229,5 @@ include('header.php')
         //console.log("mixOpacity Called");
       };
     </script>
-
+  <p class= "full-width info">Return <a href="dashboard.php">to main dashboard </a>.</p>
+<?php include 'footer.php' ?> 

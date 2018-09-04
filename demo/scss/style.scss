@@ -174,14 +174,14 @@ dashboard {
   display: flex;
   flex-flow: row wrap;
   width: 70vw;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   justify-content: space-around;
   margin-top: 10vh;
   margin-bottom: 2vh;
 
   > div {
-    min-width: 320px;
+    min-width: 280px;
     height: 280px;
     margin-bottom: 2vh;
     background: #bfd7f8;
@@ -234,7 +234,7 @@ dashboard {
       width: 100%;
     }
     img {
-      width: 320px;
+      width: 280px;
       height:280px;
       object-fit: cover;
       object-position: 0 10%;
@@ -269,8 +269,8 @@ dashboard {
 
   img {
     background: transparent;
-    width: 320px;
-    height: 320px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     border-radius:4px;
     object-position: 0 10%;
@@ -312,7 +312,7 @@ dashboard {
   div.slide_column{
     position:relative;
     min-width:310px;
-    max-height: 320px;
+    max-height: 280px;
     overflow:hidden;
     margin-bottom:20px;
      

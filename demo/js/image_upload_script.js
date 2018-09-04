@@ -28,9 +28,14 @@
 				data: form_data,
 				success:function(response) {
 					alert(response);
+          //reloadPage();
 					$('#selectfile').val('');
 				}
 			});
        //console.log(form_data);
 		}
 	}
+
+/*function reloadPage() {
+    location.reload();
+}*/

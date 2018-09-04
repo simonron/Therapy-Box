@@ -3,7 +3,7 @@ session_start();
 $profile_image=$_SESSION["profile_image"]; 
 $_SESSION["upload_target"] = 'profiles';
 require_once "config.php";
-
+echo"<h1>$profile_image</h1>";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close statement
     mysqli_stmt_close($stmt);
   }
-//$profile_image = $_SESSION['profile_image'];
+$profile_image = $_SESSION['profile_image'];
 
   // Validate password
   if(empty(trim($_POST["password"]))){
@@ -67,10 +67,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   // Check input errors before inserting in database
   if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-    if (!isset($profile_image) || ($profile_image === "" )){
+    /*if (!isset($profile_image) || ($profile_image === "" )){
       $profile_image="no avatar uploaded";
-    $profile_image=""; 
-    }
+    //$profile_image=""; 
+    }*/
     
     //$email ="a sock";
     $param_profileimage = $profile_image; 
@@ -173,6 +173,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           </form>
         </div>
       </div>
+        <p class= "full-width info">Return <a href="index.php">to login page </a>.</p>
     </body>
 
     </html>
