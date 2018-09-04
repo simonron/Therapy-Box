@@ -35,7 +35,11 @@ include('header.php')
           <div id="drag_upload_file">
             <p>Add picture</p>
             <p>or</p>
-            <p><input type="button" value="Select File" onclick="file_explorer();"></p>
+            <p><input type="button" value="Select File" onclick="file_explorer();"
+ <?           if($upload_target == "photos"){
+   header("location: photo_dashboard.php");
+}?>
+            ></p>
 
             <input type="file" id="selectfile">
           </div>
@@ -229,5 +233,6 @@ include('header.php')
         //console.log("mixOpacity Called");
       };
     </script>
+  </div>
   <p class= "full-width info">Return <a href="dashboard.php">to main dashboard </a>.</p>
 <?php include 'footer.php' ?> 
