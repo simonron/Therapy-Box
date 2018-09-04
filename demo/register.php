@@ -34,7 +34,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close statement
     mysqli_stmt_close($stmt);
   }
-$profile_image = $_SESSION['profile_image'];
+  $profile_image = $_SESSION['profile_image'];
+$_SESSION['username'] =   $username;
 
   // Validate password
   if(empty(trim($_POST["password"]))){
@@ -62,7 +63,7 @@ $profile_image = $_SESSION['profile_image'];
   } else{
     $email = trim($_POST["email"]);
   }
-  
+
 
 
   // Check input errors before inserting in database
@@ -71,14 +72,14 @@ $profile_image = $_SESSION['profile_image'];
       $profile_image="no avatar uploaded";
     //$profile_image=""; 
     }*/
-    
+
     //$email ="a sock";
     $param_profileimage = $profile_image; 
     $param_email = $email;
     //$username ="give it a go3";
     /*if($profile_image == "" ){$profile_image="no avatar uploaded";}*/
-      // Prepare an insert statement
-      $sql = "INSERT INTO users (username, password, profile_image, email) VALUES (?,?,?,?)";
+    // Prepare an insert statement
+    $sql = "INSERT INTO users (username, password, profile_image, email) VALUES (?,?,?,?)";
 
     if($stmt = mysqli_prepare($link, $sql)){
       // Bind variables to the prepared statement as parameters
@@ -88,15 +89,15 @@ $profile_image = $_SESSION['profile_image'];
       $param_username = $username;
       $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
       $param_email = $email;
-      
+
 
       // Attempt to execute the prepared statement
       if(mysqli_stmt_execute($stmt)){
         // Redirect to index login page
 
-       echo "<script type='text/javascript'>window.location.href = 'dashboard.php';</script>";
+        echo "<script type='text/javascript'>window.location.href = 'dashboard.php';</script>";
         exit();
-    }else{
+      }else{
         echo "There is a problem - can't find a file - please try again";
       }
     }
@@ -106,74 +107,74 @@ $profile_image = $_SESSION['profile_image'];
   }
 
 
-     // Close connection
-     mysqli_close($link);
-     }
+  // Close connection
+  mysqli_close($link);
+}
 ?>
 
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-      <meta charset="UTF-8">
-      <title>Register</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-      <link rel="stylesheet" href="css/style.css">
-      <script type="text/javascript" src="js/jquery.js"></script>
-      <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/image_upload_script.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/image_upload_script.js"></script>
 
-    </head>
+  </head>
 
-    <body>
-      <div class="bgContainer">
-        <div class="wrapper">
-          <h2>Hackathon</h2>
-          <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post" ;>
-
-
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-
-              <input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo $username; ?>">
-              <span class="help-block"><?php echo $username_err; ?></span>
-            </div>
-
-            <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-
-              <input type="text" name="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>">
-              <span class="help-block "><?php echo $email_err; ?></span>
-            </div>
+  <body>
+    <div class="bgContainer">
+      <div class="wrapper">
+        <h2>Hackathon</h2>
+        <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post" ;>
 
 
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-              <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo $password; ?>">
-              <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
+          <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+
+            <input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo $username; ?>">
+            <span class="help-block"><?php echo $username_err; ?></span>
+          </div>
+
+          <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+
+            <input type="text" name="email" class="form-control" placeholder="Email" value="<?php echo $email; ?>">
+            <span class="help-block "><?php echo $email_err; ?></span>
+          </div>
 
 
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-              <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password" value="<?php echo $confirm_password; ?>">
-              <span class="help-block"><?php echo $confirm_password_err; ?></span>
-            </div>
+          <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+            <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo $password; ?>">
+            <span class="help-block"><?php echo $password_err; ?></span>
+          </div>
 
-            <div class="form-group full-width">
-              <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
-                <div id="drag_upload_file">
-                  <p>Add picture</p>
-                  <p>or</p>
-                  <p><input type="button" value="Select File" onclick="file_explorer();"></p>
-                  <input type="file" id="selectfile">
-                </div>
 
+          <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+            <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password" value="<?php echo $confirm_password; ?>">
+            <span class="help-block"><?php echo $confirm_password_err; ?></span>
+          </div>
+
+          <div class="form-group full-width">
+            <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+              <div id="drag_upload_file">
+                <p>Add picture</p>
+                <p>or</p>
+                <p><input type="button" value="Select File" onclick="file_explorer();"></p>
+                <input type="file" id="selectfile">
               </div>
-            </div>
-            <div class="form-group full-width">
-              <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
-          </form>
-        </div>
-      </div>
-        <p class= "full-width info">Return <a href="index.php">to login page </a>.</p>
-    </body>
 
-    </html>
+            </div>
+          </div>
+          <div class="form-group full-width">
+            <input type="submit" class="btn btn-primary" value="Submit">
+          </div>
+        </form>
+      </div>
+    </div>
+    <p class= "full-width info">Return <a href="index.php">to login page </a>.</p>
+  </body>
+
+</html>

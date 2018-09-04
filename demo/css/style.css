@@ -28,7 +28,8 @@ input:-webkit-autofill {
 
 .btn-primary {
   background: #ffde55 !important;
-  border-bottom: solid 0px transparent !important; }
+  border-bottom: solid 0px transparent;
+  color: #000 !important; }
 
 .btn-primary:hover {
   color: #fff !important; }
@@ -146,12 +147,14 @@ dashboard {
   margin-bottom: 2vh; }
   dashboard > div {
     min-width: 280px;
-    height: 310px;
-    margin-bottom: 2vh;
+    height: 200px;
+    margin-bottom: 4vh;
     background: #bfd7f8;
-    min-height: 200px;
+    min-height: 180px;
     position: relative;
-    font-size: 20px; }
+    font-size: 20px;
+    border: #fee47d 2px solid;
+    border-radius: 4px; }
   dashboard div#city {
     position: absolute;
     bottom: 10px;
@@ -179,18 +182,18 @@ dashboard {
   dashboard div#weather_condition img {
     transform: scale(3, 3); }
   dashboard div#photos {
-    position: relative;
-    height: 280px; }
+    position: relative; }
     dashboard div#photos div {
       position: absolute;
       margin-top: -7px;
       width: 100%; }
     dashboard div#photos img {
-      width: 280px;
-      height: 280px;
+      width: 276px;
+      height: 170px;
       object-fit: cover;
       object-position: 0 10%;
-      margin-top: -4px; }
+      margin-top: -6px;
+      border-radius: 4px; }
 
 .info {
   width: 100% !important; }
@@ -205,7 +208,7 @@ dashboard {
 /******************PHOTO DASHBOARD*********************/
 /******************PHOTO DASHBOARD*********************/
 .photo_dashboard {
-  height: 100vh; }
+  height: 100%; }
   .photo_dashboard .columns {
     display: flex;
     flex-flow: row wrap;
@@ -216,20 +219,17 @@ dashboard {
     position: relative; }
   .photo_dashboard div.slide {
     position: absolute;
-    width: 100%; }
+    width: 280px;
+    height: 200px;
+    border-radius: 4px;
+    border: solid 2px #fee47d; }
   .photo_dashboard img {
     background: transparent;
     width: 280px;
-    height: 280px;
+    height: 196px;
     object-fit: cover;
     border-radius: 4px;
     object-position: 0 10%; }
-  .photo_dashboard div.slide img {
-    position: absolute;
-    top: 0px;
-    background: transparent;
-    width: 100%;
-    min-width: 280px; }
   .photo_dashboard h1 {
     position: absolute;
     left: 50%;
@@ -245,7 +245,7 @@ dashboard {
   .photo_dashboard div.slide_column {
     position: relative;
     min-width: 310px;
-    max-height: 280px;
+    min-height: 200px;
     overflow: hidden;
     margin-bottom: 20px; }
     .photo_dashboard div.slide_column img {
@@ -256,5 +256,3 @@ dashboard {
       object-fit: cover;
       border-radius: 4px;
       object-position: 0 10%; }
-  .photo_dashboard .slide_column {
-    height: 100vh; }

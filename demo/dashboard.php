@@ -6,8 +6,10 @@ require_once "config.php";
 if(isset($_SESSION["profile_image"])){
     $profile_image= $_SESSION["profile_image"];
 }
+if(isset($_SESSION["username"])){
+$username = htmlspecialchars($_SESSION["username"]);}
 
-$username = htmlspecialchars($_SESSION["username"]);
+
 //echo'<br>'+$username
  $sql = 'SELECT username, profile_image FROM users';
 $result = mysqli_query($link, $sql);

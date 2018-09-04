@@ -35,7 +35,9 @@ input:-webkit-autofill {
 
 .btn-primary {
   background: #ffde55 !important;
-  border-bottom: solid 0px transparent !important;
+  border-bottom: solid 0px transparent ;
+    color: #000 !important;
+
 }
 
 .btn-primary:hover {
@@ -180,12 +182,14 @@ dashboard {
 
   > div {
     min-width: 280px;
-    height: 310px;
-    margin-bottom: 2vh;
+    height:200px;
+    margin-bottom: 4vh;
     background: #bfd7f8;
-    min-height: 200px;
+    min-height: 180px;
     position: relative;
     font-size: 20px;
+    border: $yellow 2px solid;
+    border-radius: 4px;
   }
   div#city {
     position: absolute;
@@ -224,7 +228,7 @@ dashboard {
   
   div#photos { // main dashboard
     position: relative;
-    height: 280px;
+
 
 
     div {
@@ -233,11 +237,12 @@ dashboard {
       width: 100%;
     }
     img {
-      width: 280px;
-      height:280px;
+      width: 276px;
+      height:170px;
       object-fit: cover;
       object-position: 0 10%;
-          margin-top:-4px;
+      margin-top:-6px;
+      border-radius:4px;
     }
   }
 }
@@ -258,7 +263,7 @@ dashboard {
 
 .photo_dashboard {
 
-  height: 100vh;
+  height: 100%;
 
   .columns {
     display: flex;
@@ -273,25 +278,21 @@ dashboard {
 
   div.slide {
     position: absolute;
-    width: 100%;
+    width: 280px;
+    height:200px;
+        border-radius:4px;
+    border:solid 2px $yellow;
+
   }
 
   img {
     background: transparent;
     width: 280px;
-    height: 280px;
+    height: 196px;
     object-fit: cover;
     border-radius:4px;
     object-position: 0 10%;
   
-  }
-
-  div.slide img {
-    position: absolute;
-    top: 0px;
-    background: transparent;
-    width: 100%;
-    min-width:280px;
   }
 
 
@@ -321,7 +322,7 @@ dashboard {
   div.slide_column{
     position:relative;
     min-width:310px;
-    max-height: 280px;
+    min-height: 200px;
     overflow:hidden;
     margin-bottom:20px;
      
@@ -334,10 +335,5 @@ dashboard {
       border-radius:4px;
       object-position: 0 10%;
     }
-  }
-
-  .slide_column {
-    height: 100vh;
-
   }
 }
