@@ -194,6 +194,9 @@ dashboard {
       object-position: 0 10%;
       margin-top: -4px; }
 
+.info {
+  width: 100% !important; }
+
 #drop_file_zone p {
   margin-left: -75px; }
 

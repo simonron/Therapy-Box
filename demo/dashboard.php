@@ -3,6 +3,10 @@
 session_start();
 require_once "config.php";
 
+if(isset($_SESSION["profile_image"])){
+    $profile_image= $_SESSION["profile_image"];
+}
+
 $username = htmlspecialchars($_SESSION["username"]);
 //echo'<br>'+$username
  $sql = 'SELECT username, profile_image FROM users';
