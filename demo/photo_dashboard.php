@@ -124,6 +124,13 @@ function LoadFiles($dir,$handle ) {
       </div>
       </photo_dashboard>
     <script>
+      function _isMobile() {
+      var isMobile = (/iphone|ipod|android|ie|blackberry|fennec/).test(navigator.userAgent.toLowerCase());
+      return isMobile;
+    }
+    mobile = _isMobile();
+
+      
       // TILT action code
       var gama = null;
       var zone = null;
@@ -148,7 +155,8 @@ function LoadFiles($dir,$handle ) {
       var Target = 1000;
       var fadeDir = 1;
       var Mpos = 0;
-      init();
+      
+
 
       function init() {
         //alert("init");
@@ -199,6 +207,9 @@ function LoadFiles($dir,$handle ) {
           tilted = averageIt(pitch, flicker);
           //varies between 0 and 1
           // total range of possible tilt = 12
+                
+          
+          if(mobile="false"){
           var number = 1;
           var mobileRange = 18 / number_of_slides;
           var mobileZone = (tilted / mobileRange) - number_of_slides / 4;
@@ -216,7 +227,9 @@ function LoadFiles($dir,$handle ) {
             number++;
             RowNum += 1;
           }
+          }
         });
+          }
 
         function Round(num) {
           x = num.toFixed(smoothness);
@@ -266,10 +279,10 @@ function LoadFiles($dir,$handle ) {
           //console.log("div.container" + number +" Opacity = "+($Opacity+RowNum-5 ));
         }
         //allways displayed slides for row of five
-        mixOpacity('div.container1', 1);
-        mixOpacity('div.container4', 1);
-        mixOpacity('div.container7', 1);
-        mixOpacity('div.container10', 1);
+        mixOpacity('#table_container .col_0:last-child', 1);
+        mixOpacity('#table_container .col_1:last-child', 1);
+        mixOpacity('#table_container .col_2:last-child', 1);
+        mixOpacity('#table_container .col_3:last-child', 1);
 
       });
 

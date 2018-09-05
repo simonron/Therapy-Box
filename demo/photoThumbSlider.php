@@ -1,5 +1,8 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+<!--
+<script type="text/javascript" src="js/pho to_script.js"></script>
+-->
 <link rel="stylesheet" href="css/style.css">
 <span id = 'thumbnails' >
 <? $dir="images/photos"; $handle=opendir($dir); ?>
