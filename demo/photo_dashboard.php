@@ -23,66 +23,71 @@ include('header.php')
 <script type="text/javascript" src="js/image_upload_script.js"></script>
 
 </head>
+
 <body>
   <div class="photo_dashboard bgContainer">
     <div class="internal_wrappper">
-      <br>
+      <br>  <h1>Photos</h1>
+      <div id="table_container">
+     
+        <div id="left_column">
+          <div id="add_photo">
+            <h2>Add Photo</h2>
+            <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+              <?  $file = 'images/photos/'.$photo; ?>
+              <div id="drag_upload_file">
+                <p>Add picture</p>
+                <p>or</p>
+                <p><input type="button" value="Select File" onclick="file_explorer();" <? if($upload_target=="photos" ){ header( "location: photo_dashboard.php"); }?> >
+                </p>
 
-      <div id="add_photo">
-        <h2>Add Photo</h2>
-        <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
-          <?  $file = 'images/photos/'.$photo; ?>
-          <div id="drag_upload_file">
-            <p>Add picture</p>
-            <p>or</p>
-            <p><input type="button" value="Select File" onclick="file_explorer();"
- <?           if($upload_target == "photos"){
-   header("location: photo_dashboard.php");
-}?>
-            ></p>
-
-            <input type="file" id="selectfile">
+                <input type="file" id="selectfile">
+              </div>
+            </div>
           </div>
+          <? include "photoThumbSlider.php" ?>
         </div>
-      </div>
+        <div class="columns box">
+          <div class="column">
+            <div class="slide_column col_1">
+              <? $dir="images/photos/"; $handle=opendir($dir); 
+              $fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
+          echo $fi;
+              $NumberSlidesInCols = (iterator_count($fi)/4)?>
+              <? $count =0;$colcount=1;
+              while ($file = readdir($handle)) {
+                if ($file<>".") {
+                  if ($file<>".."){
+                    if ($file<>".DS_Store"){
+                      $count+=1;
+                      $slide="$file";
+                      
+                      $LastModified = filemtime($file);
+                      $Files[] = array($dir .$file, $LastModified);
+                      echo "<div class='slide container".$count."'>";
+                      echo  "<img src='images/photos/".$slide."'>";
+                      echo "</div>";
 
-      <div class="columns box">
-        <div class="column">
-          <div class="slide_column col_1">
-            <? $dir="images/photos/"; $handle=opendir($dir); 
-            $fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
-            $NumberSlidesInCols = (iterator_count($fi)/4)?>
-            <? $count =0;$colcount=1;
-            while ($file = readdir($handle)) {
-              if ($file<>".") {
-                if ($file<>".."){
-                  if ($file<>".DS_Store"){
-                    $count+=1;
-                    $slide="$file";
-                    echo "<div class='slide container".$count."'>";
-                    echo  "<img src='images/photos/".$slide."'>";
-                    echo "</div>";
-                    
-                    if($count%$NumberSlidesInCols == 0){ // number of slides per slot before move to next column
-                      $colcount+=1;
-                      if($colcount ==5){$colcount=1;}// how many boxes/columns
-                      echo(" </div></div>       
+                      if($count%$NumberSlidesInCols == 0){ // number of slides per slot before move to next column
+                        $colcount+=1;
+                        if($colcount ==5){$colcount=1;}// how many boxes/columns
+                        echo(" </div></div>       
                   <div class='column'>
                   <div class='slide_column col_$colcount'>");
+                      }
+                      $target = htmlspecialchars($_SESSION["target"]);
                     }
-                    $target = htmlspecialchars($_SESSION["target"]);
                   }
                 }
               }
-            }
-            closedir($handle);
-            ?>
+              closedir($handle);
+              ?>
+            </div>
           </div>
         </div>
       </div>
       </photo_dashboard>
     <script>
-
       // TILT action code
       var gama = null;
       var zone = null;
@@ -204,13 +209,14 @@ include('header.php')
         var boxLeft = $('.box').offset().left;
         var winWidth = $('.box').width() + boxLeft + 9;
         var boxWidth = (winWidth);
-        var Mpos = boxWidth - (e.pageX - boxLeft)/2;
-        var scale=(boxWidth/500);console.log(scale);
+        var Mpos = boxWidth - (e.pageX - boxLeft) / 2;
+        var scale = (boxWidth / 500);
+        console.log(scale);
 
 
-  
 
-        var zone = ((Mpos / 200)*scale)-scale*3;// width of travel for one slide transition
+
+        var zone = ((Mpos / 200) * scale) - scale * 3; // width of travel for one slide transition
         $Opacity = zone; // width of travel for one slide transition
         number = 1;
         RowNum = 1;
@@ -224,8 +230,11 @@ include('header.php')
           //console.log("div.container" + number +" Opacity = "+($Opacity+RowNum-5 ));
         }
         //allways displayed slides for row of five
-        mixOpacity('div.container5', 1);
-        mixOpacity('div.container3', 1);
+        mixOpacity('div.container1', 1);
+        mixOpacity('div.container4', 1);
+        mixOpacity('div.container7', 1);
+        mixOpacity('div.container10', 1);
+
       });
 
       function mixOpacity(div, Opacity) { // sets css opacity of DIV
@@ -233,7 +242,8 @@ include('header.php')
         $(div).attr("style", "opacity:" + Opacity);
         //console.log("mixOpacity Called");
       };
+
     </script>
   </div>
-  <p class= "full-width info">Return <a href="dashboard.php">to main dashboard </a>.</p>
-<?php include 'footer.php' ?> 
+  <p class="full-width info">Return <a href="dashboard.php">to main dashboard </a>.</p>
+  <?php include 'footer.php' ?>

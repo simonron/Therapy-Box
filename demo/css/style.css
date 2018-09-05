@@ -1,11 +1,18 @@
 body {
-  font: 14px sans-serif;
+  font: 24px sans-serif;
   text-align: center;
   width: 100vw;
   overflow-x: hidden; }
 
+h1 {
+  text-align: center;
+  font-size: 80px;
+  color: #fff;
+  margin-bottom: 50px; }
+
 h2 {
-  color: #fff; }
+  color: #fff;
+  font-size: 36px; }
 
 .form-control,
 input {
@@ -16,7 +23,9 @@ input {
   border-bottom: 1px #fff solid;
   border-radius: 0;
   padding-left: 0px;
-  padding-bottom: 0px; }
+  padding-bottom: 0px;
+  font-size: 26px;
+  border-radius: 10px 10px 0 0; }
 
 .form-control:focus {
   border-color: #fff; }
@@ -25,6 +34,9 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #6fa3f7 inset !important;
   border: none;
   border-bottom: 1px #fff solid; }
+
+.btn {
+  font-size: 20px; }
 
 .btn-primary {
   background: #ffde55 !important;
@@ -71,7 +83,7 @@ p.full-width {
 
 p.full-width {
   color: #fff;
-  position: absolute;
+  position: fixed;
   bottom: 30px; }
   p.full-width a {
     color: #fee47d; }
@@ -131,21 +143,25 @@ input.btn {
     margin: 0 auto; }
 
 img.profile_image {
-  width: 30vw;
-  Height: 100%;
+  Height: 100px;
   object-fit: cover;
-  object-position: 0 10%; }
+  object-position: 0 10%;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  border: #fee47d 2px solid;
+  border-radius: 4px; }
 
-dashboard {
+dashboard, left_column {
   display: flex;
   flex-flow: row wrap;
-  width: 70vw;
-  max-width: 1200px;
+  width: 80vw;
+  max-width: 950px;
   margin: 0 auto;
   justify-content: space-around;
   margin-top: 10vh;
   margin-bottom: 2vh; }
-  dashboard > div {
+  dashboard > div, left_column > div {
     min-width: 280px;
     height: 200px;
     margin-bottom: 4vh;
@@ -155,44 +171,44 @@ dashboard {
     font-size: 20px;
     border: #fee47d 2px solid;
     border-radius: 4px; }
-  dashboard div#city {
+  dashboard div#city, left_column div#city {
     position: absolute;
     bottom: 10px;
     margin: 0 auto;
     width: 100%; }
-  dashboard div#temp {
+  dashboard div#temp, left_column div#temp {
     position: absolute;
     top: 60px;
     left: 50%;
     width: 5em;
     text-align: center; }
-  dashboard div#weather_condition {
+  dashboard div#weather_condition, left_column div#weather_condition {
     position: absolute;
     top: 60px;
     left: 20px;
     width: 5em;
     text-align: center; }
-  dashboard h2 {
+  dashboard h2, left_column h2 {
     width: 100%;
     background: #fee47d;
     margin-top: 0px;
     font-size: 2.5vh;
     padding: 6px 0px 4px;
     color: #000; }
-  dashboard div#weather_condition img {
+  dashboard div#weather_condition img, left_column div#weather_condition img {
     transform: scale(3, 3); }
-  dashboard div#photos {
+  dashboard div#photos, left_column div#photos {
     position: relative; }
-    dashboard div#photos div {
+    dashboard div#photos div, left_column div#photos div {
       position: absolute;
       margin-top: -7px;
       width: 100%; }
-    dashboard div#photos img {
+    dashboard div#photos img, left_column div#photos img {
       width: 276px;
-      height: 170px;
+      height: 163px;
       object-fit: cover;
       object-position: 0 10%;
-      margin-top: -6px;
+      margin-top: -3px;
       border-radius: 4px; }
 
 .info {
@@ -208,12 +224,30 @@ dashboard {
 /******************PHOTO DASHBOARD*********************/
 /******************PHOTO DASHBOARD*********************/
 .photo_dashboard {
-  height: 100%; }
+  height: 200vh; }
+  @media (min-width: 930px) {
+    .photo_dashboard {
+      height: 100vh; }
+      .photo_dashboard div#table_container {
+        display: grid;
+        grid-template-columns: 320px 3fr;
+        max-width: 930px;
+        margin: 0 auto;
+        padding-right: 20px; } }
+  .photo_dashboard #left_column {
+    width: 300px;
+    margin: 0 auto; }
+    .photo_dashboard #left_column > div {
+      width: 280px;
+      height: 200px;
+      border-radius: 4px;
+      border: solid 2px #fee47d;
+      margin-bottom: 20px; }
   .photo_dashboard .columns {
     display: flex;
     flex-flow: row wrap;
     width: 98vw;
-    max-width: 900px;
+    max-width: 620px;
     justify-content: space-around;
     margin: 0 auto;
     position: relative; }
@@ -225,19 +259,14 @@ dashboard {
     border: solid 2px #fee47d; }
   .photo_dashboard img {
     background: transparent;
-    width: 280px;
+    width: 276px;
     height: 196px;
     object-fit: cover;
     border-radius: 4px;
     object-position: 0 10%; }
-  .photo_dashboard h1 {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    font-size: 100px;
-    color: #fff;
-    Display: none; }
+  .photo_dashboard #add_photo {
+    background: #fdcf18;
+    opacity: 0.9; }
   .photo_dashboard div.box {
     border: none;
     box-shadow: none;
@@ -256,3 +285,16 @@ dashboard {
       object-fit: cover;
       border-radius: 4px;
       object-position: 0 10%; }
+  .photo_dashboard #table_container > div.columns.box > div:nth-child(1) > div > div.slide:first-child,
+  .photo_dashboard #table_container > div.columns.box > div:nth-child(2) > div > div.slide:first-child,
+  .photo_dashboard #table_container > div.columns.box > div:nth-child(3) > div > div.slide:first-child,
+  .photo_dashboard #table_container > div.columns.box > div:nth-child(4) > div > div.slide:first-child {
+    opacity: 1 !important;
+    background: #f00 !important; }
+
+#table_container > div.columns.box > div:nth-child(1) > div > div.slide:after,
+#table_container > div.columns.box > div:nth-child(2) > div > div.slide:after,
+#table_container > div.columns.box > div:nth-child(3) > div > div.slide:after,
+#table_container > div.columns.box > div:nth-child(4) > div > div.slide:after,
+body {
+  content: "YES!"; }

@@ -1,8 +1,7 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/photo_script.js"></script>
 <link rel="stylesheet" href="css/style.css">
-
+<span id = 'thumbnails' >
 <? $dir="images/photos"; $handle=opendir($dir); ?>
 <? $count =0;
 while ($file = readdir($handle)) {
@@ -20,3 +19,4 @@ while ($file = readdir($handle)) {
 }
 closedir($handle);
 ?>
+</span>

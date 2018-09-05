@@ -1,14 +1,23 @@
 $yellow: #fee47d;
 
 body {
-  font: 14px sans-serif;
+  font: 24px sans-serif;
   text-align: center;
-  width:100vw;
-  overflow-x:hidden;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+h1 {
+
+  text-align: center;
+  font-size: 80px;
+  color: #fff;
+  margin-bottom: 50px;
 }
 
 h2 {
   color: #fff;
+  font-size:36px;
 }
 
 .form-control,
@@ -21,6 +30,8 @@ input {
   border-radius: 0;
   padding-left: 0px;
   padding-bottom: 0px;
+  font-size:26px;
+  border-radius: 10px 10px 0 0;
 }
 
 .form-control:focus {
@@ -33,10 +44,13 @@ input:-webkit-autofill {
   border-bottom: 1px #fff solid;
 }
 
+.btn{
+  font-size:20px;
+}
 .btn-primary {
   background: #ffde55 !important;
-  border-bottom: solid 0px transparent ;
-    color: #000 !important;
+  border-bottom: solid 0px transparent;
+  color: #000 !important;
 
 }
 
@@ -93,7 +107,7 @@ p.full-width {
   a {
     color: $yellow;
   }
-  position:absolute;
+  position:fixed;
   bottom:30px;
 }
 
@@ -163,18 +177,21 @@ input.btn {
 }
 
 img.profile_image {
-  width: 30vw;
-  Height: 100%;
+  Height: 100px;
   object-fit: cover;
   object-position: 0 10%;
-
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  border: $yellow 2px solid;
+  border-radius: 4px;
 }
 
-dashboard {
+dashboard,left_column {
   display: flex;
   flex-flow: row wrap;
-  width: 70vw;
-  max-width: 1200px;
+  width: 80vw;
+  max-width: 950px;
   margin: 0 auto;
   justify-content: space-around;
   margin-top: 10vh;
@@ -182,7 +199,7 @@ dashboard {
 
   > div {
     min-width: 280px;
-    height:200px;
+    height: 200px;
     margin-bottom: 4vh;
     background: #bfd7f8;
     min-height: 180px;
@@ -225,8 +242,9 @@ dashboard {
     transform: scale(3, 3);
   }
 
-  
-  div#photos { // main dashboard
+
+  div#photos {
+    // main dashboard
     position: relative;
 
 
@@ -238,40 +256,67 @@ dashboard {
     }
     img {
       width: 276px;
-      height:170px;
+      height: 163px;
       object-fit: cover;
       object-position: 0 10%;
-      margin-top:-6px;
-      border-radius:4px;
+      margin-top: -3px;
+      border-radius: 4px;
     }
   }
 }
-.info{
-  width:100% !important;
+
+.info {
+  width: 100% !important;
 }
 
-  #drop_file_zone p {
-    margin-left: -75px;
-  }
+#drop_file_zone p {
+  margin-left: -75px;
+}
 
 /******************PHOTO DASHBOARD*********************/
+
 /******************PHOTO DASHBOARD*********************/
+
 /******************PHOTO DASHBOARD*********************/
+
 /******************PHOTO DASHBOARD*********************/
+
 /******************PHOTO DASHBOARD*********************/
+
 /******************PHOTO DASHBOARD*********************/
 
 .photo_dashboard {
+  height: 200vh;
+  @media (min-width: 930px) {
+    height:100vh;
+    div#table_container {
+      display: grid;
+      grid-template-columns: 320px 3fr;
+      max-width: 930px;
+      margin: 0 auto;
+      padding-right: 20px;
+    }
 
-  height: 100%;
+
+  }
+  #left_column {
+    width: 300px;
+    margin: 0 auto;
+    > div {
+      width: 280px;
+      height: 200px;
+      border-radius: 4px;
+      border: solid 2px $yellow;
+      margin-bottom: 20px;
+    }
+  }
 
   .columns {
     display: flex;
     flex-flow: row wrap;
     width: 98vw;
-    max-width: 900px;
+    max-width: 620px;
     justify-content: space-around;
-
     margin: 0 auto;
     position: relative;
   }
@@ -279,32 +324,28 @@ dashboard {
   div.slide {
     position: absolute;
     width: 280px;
-    height:200px;
-        border-radius:4px;
-    border:solid 2px $yellow;
+    height: 200px;
+    border-radius: 4px;
+    border: solid 2px $yellow;
 
   }
 
   img {
     background: transparent;
-    width: 280px;
+    width: 276px;
     height: 196px;
     object-fit: cover;
-    border-radius:4px;
+    border-radius: 4px;
     object-position: 0 10%;
-  
+
   }
 
 
 
-  h1 {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    text-align: center;
-    font-size: 100px;
-    color: #fff;
-    Display: none;
+  #add_photo{
+    background:darken($yellow, 20%);
+    opacity:0.9;
+    ;
   }
 
 
@@ -315,25 +356,42 @@ dashboard {
     height: 100% !important;
   }
 
-  div.slide{
-        //overflow:hidden;
+  div.slide {
+    //overflow:hidden;
   }
-  
-  div.slide_column{
-    position:relative;
-    min-width:310px;
+
+  div.slide_column {
+    position: relative;
+    min-width: 310px;
     min-height: 200px;
-    overflow:hidden;
-    margin-bottom:20px;
-     
-    img{
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    img {
       position: absolute;
       top: 0px;
-      max-width:100%;
-      left:0px;
+      max-width: 100%;
+      left: 0px;
       object-fit: cover;
-      border-radius:4px;
+      border-radius: 4px;
       object-position: 0 10%;
     }
   }
+  #table_container > div.columns.box > div:nth-child(1) > div > div.slide:first-child,
+  #table_container > div.columns.box > div:nth-child(2) > div > div.slide:first-child,
+  #table_container > div.columns.box > div:nth-child(3) > div > div.slide:first-child,
+  #table_container > div.columns.box > div:nth-child(4) > div > div.slide:first-child{
+    opacity:1 !important;
+    background:#f00 !important;
+
+  }
+}
+
+  #table_container > div.columns.box > div:nth-child(1) > div > div.slide:after,
+  #table_container > div.columns.box > div:nth-child(2) > div > div.slide:after,
+  #table_container > div.columns.box > div:nth-child(3) > div > div.slide:after,
+  #table_container > div.columns.box > div:nth-child(4) > div > div.slide:after,
+body{
+      content: "YES!";
+
 }
