@@ -3,8 +3,11 @@ $yellow: #fee47d;
 body {
   font: 24px sans-serif;
   text-align: center;
-  width: 100vw;
   overflow-x: hidden;
+   height: 100%;
+  background-image: url("../images/BGimage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -59,10 +62,7 @@ input:-webkit-autofill {
 }
 
 .bgContainer {
-  height: 100vh;
-  background-image: url("../images/BGimage.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+ 
 }
 
 .bgContainer.dashboard {
@@ -287,6 +287,7 @@ dashboard,left_column {
 
 .photo_dashboard {
   height: 200vh;
+  
   @media (min-width: 930px) {
     height:100vh;
     div#table_container {
@@ -296,7 +297,9 @@ dashboard,left_column {
       margin: 0 auto;
       padding-right: 20px;
     }
-
+  .columns {
+    margin-top:0px !important;
+    }
 
   }
   #left_column {
@@ -319,6 +322,7 @@ dashboard,left_column {
     justify-content: space-around;
     margin: 0 auto;
     position: relative;
+    margin-top:280px;
   }
 
   div.slide {
@@ -377,23 +381,4 @@ dashboard,left_column {
       object-position: 0 10%;
     }
   }
-/*
-  #table_container > div.columns.box > div:nth-child(1) > div > div.slide:first-child,
-  #table_container > div.columns.box > div:nth-child(2) > div > div.slide:first-child,
-  #table_container > div.columns.box > div:nth-child(3) > div > div.slide:first-child,
-  #table_container > div.columns.box > div:nth-child(4) > div > div.slide:first-child{
-    opacity:1 !important;
-    background:#f00 !important;
-*/
-
-/*  }
-}*/
-/*
-  #table_container > div.columns.box > div:nth-child(1) > div > div.slide:after,
-  #table_container > div.columns.box > div:nth-child(2) > div > div.slide:after,
-  #table_container > div.columns.box > div:nth-child(3) > div > div.slide:after,
-  #table_container > div.columns.box > div:nth-child(4) > div > div.slide:after,
-body{
-      content: "YES!";
-*/
 }

@@ -1,8 +1,11 @@
 body {
   font: 24px sans-serif;
   text-align: center;
-  width: 100vw;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  height: 100%;
+  background-image: url("../images/BGimage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
 
 h1 {
   text-align: center;
@@ -45,12 +48,6 @@ input:-webkit-autofill {
 
 .btn-primary:hover {
   color: #fff !important; }
-
-.bgContainer {
-  height: 100vh;
-  background-image: url("../images/BGimage.jpg");
-  background-size: cover;
-  background-repeat: no-repeat; }
 
 .bgContainer.dashboard {
   height: 100% !important; }
@@ -224,25 +221,7 @@ dashboard, left_column {
 /******************PHOTO DASHBOARD*********************/
 /******************PHOTO DASHBOARD*********************/
 .photo_dashboard {
-  height: 200vh;
-  /*
-    #table_container > div.columns.box > div:nth-child(1) > div > div.slide:first-child,
-    #table_container > div.columns.box > div:nth-child(2) > div > div.slide:first-child,
-    #table_container > div.columns.box > div:nth-child(3) > div > div.slide:first-child,
-    #table_container > div.columns.box > div:nth-child(4) > div > div.slide:first-child{
-      opacity:1 !important;
-      background:#f00 !important;
-  */
-  /*  }
-  }*/
-  /*
-    #table_container > div.columns.box > div:nth-child(1) > div > div.slide:after,
-    #table_container > div.columns.box > div:nth-child(2) > div > div.slide:after,
-    #table_container > div.columns.box > div:nth-child(3) > div > div.slide:after,
-    #table_container > div.columns.box > div:nth-child(4) > div > div.slide:after,
-  body{
-        content: "YES!";
-  */ }
+  height: 200vh; }
   @media (min-width: 930px) {
     .photo_dashboard {
       height: 100vh; }
@@ -251,7 +230,9 @@ dashboard, left_column {
         grid-template-columns: 320px 3fr;
         max-width: 930px;
         margin: 0 auto;
-        padding-right: 20px; } }
+        padding-right: 20px; }
+      .photo_dashboard .columns {
+        margin-top: 0px !important; } }
   .photo_dashboard #left_column {
     width: 300px;
     margin: 0 auto; }
@@ -268,7 +249,8 @@ dashboard, left_column {
     max-width: 620px;
     justify-content: space-around;
     margin: 0 auto;
-    position: relative; }
+    position: relative;
+    margin-top: 280px; }
   .photo_dashboard div.slide {
     position: absolute;
     width: 280px;

@@ -49,7 +49,7 @@ include('header.php')
         </div>
         <div class="columns box">
           <div class="column">
-            <div class="slide_column col_1">
+            <div class="slide_column col_0">
               <? $dir="images/photos/"; $handle=opendir($dir); 
               $fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
               $NumberSlidesInCols = (iterator_count($fi)/4);
@@ -62,8 +62,8 @@ function LoadFiles($dir,$handle ) {
         if ($Filename == '.' || $Filename == '..' || $Filename == '.DS_Store')
         continue;
         
-        $LastModified = filemtime($dir . $Filename);
-        $Files[] = array($dir . $Filename, $LastModified);
+        $DateCreated = filemtime($dir . $Filename);
+        $Files[] = array($dir . $Filename, $DateCreated);
       }
 
     return $Files;
@@ -253,7 +253,7 @@ function LoadFiles($dir,$handle ) {
 
 
         var zone = ((Mpos / 200) * scale) - scale * 3; // width of travel for one slide transition
-        $Opacity = zone; // width of travel for one slide transition
+        $Opacity = zone -(boxWidth/1000); // width of travel for one slide transition
         number = 1;
         RowNum = 1;
         while (number <= number_of_slides) {

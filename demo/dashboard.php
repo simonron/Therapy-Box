@@ -63,9 +63,11 @@ include('header.php')
           </div>
           <div>
             <h2>News</h2>
+            <h3>WIP</h3>
           </div>
           <div>
             <h2>Sport</h2>
+              <h3>WIP</h3>
           </div>
           <div id="photos">
             <a href="photo_dashboard.php">
@@ -75,9 +77,11 @@ include('header.php')
           </div>
           <div>
             <h2>Tasks</h2>
+              <h3>WIP</h3>
           </div>
           <div>
             <h2>Clothes</h2>
+              <h3>WIP</h3>
           </div>
 
         </dashboard>
