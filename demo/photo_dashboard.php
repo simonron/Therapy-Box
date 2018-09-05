@@ -265,10 +265,11 @@ function LoadFiles($dir,$handle ) {
           //console.log("div.container" + number +" Opacity = "+($Opacity+RowNum-5 ));
         }
         //allways displayed slides for row of five
-        mixOpacity('#table_container .col_0:last-child', 1);
-        mixOpacity('#table_container .col_1:last-child', 1);
-        mixOpacity('#table_container .col_2:last-child', 1);
-        mixOpacity('#table_container .col_3:last-child', 1);
+        mixOpacity('#thumbnails div:first-child', 1);
+        mixOpacity('#table_container .col_0 div:first-child', 1);
+        mixOpacity('#table_container .col_1 div:first-child', 1);
+        mixOpacity('#table_container .col_2 div:first-child', 1);
+        mixOpacity('#table_container .col_3 div:first-child', 1);
 
       });
 
