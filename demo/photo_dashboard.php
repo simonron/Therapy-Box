@@ -20,52 +20,49 @@ if (mysqli_num_rows($result) > 0) {
 
 include('header.php')
 ?>
-<script type="text/javascript" src="js/image_upload_script.js"></script>
+  <script type="text/javascript" src="js/image_upload_script.js"></script>
 
-</head>
+  </head>
 
-<body>
-  <div class="photo_dashboard bgContainer">
-    <div class="internal_wrappper">
-      <br>  <h1>Photos</h1>
-      <div id="table_container">
-     
-        <div id="left_column">
-          <div id="add_photo">
-            <h2>Add Photo</h2>
-            <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
-              <?  $file = 'images/photos/'.$photo; ?>
-              <div id="drag_upload_file">
-                <p>Add picture</p>
-                <p>or</p>
-                <p><input type="button" value="Select File" onclick="file_explorer();" <? if($upload_target=="photos" ){ header( "location: photo_dashboard.php"); }?> >
-                </p>
+  <body>
+    <div class="photo_dashboard bgContainer">
+      <div class="internal_wrappper">
+        <br>
+        <h1>Photos</h1>
+        <div id="table_container">
 
-                <input type="file" id="selectfile">
+          <div id="left_column">
+            <div id="add_photo">
+              <h2>Add Photo</h2>
+              <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+                <?  $file = 'images/photos/'.$photo; ?>
+                  <div id="drag_upload_file">
+                    <p>Add picture</p>
+                    <p>or</p>
+                    <p><input type="button" value="Select File" onclick="file_explorer();" <? if($upload_target=="photos" ){ header( "location: photo_dashboard.php"); }?> >
+                    </p>
+
+                    <input type="file" id="selectfile">
+                  </div>
               </div>
             </div>
+            <? include "photoThumbSlider.php" ?>
           </div>
-          <? include "photoThumbSlider.php" ?>
-        </div>
-        <div class="columns box">
-          <div class="column">
-            <div class="slide_column col_0">
-              <? $dir="images/photos/"; $handle=opendir($dir); 
+          <div class="columns box">
+            <div class="column">
+              <div class="slide_column col_0">
+                <? $dir="images/photos/"; $handle=opendir($dir); 
               $fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
               $NumberSlidesInCols = (iterator_count($fi)/4);
           
 function LoadFiles($dir,$handle ) {
     $Files = array();
-
- 
       while ($Filename = readdir($handle)) {
         if ($Filename == '.' || $Filename == '..' || $Filename == '.DS_Store')
         continue;
-        
         $DateCreated = filemtime($dir . $Filename);
         $Files[] = array($dir . $Filename, $DateCreated);
       }
-
     return $Files;
   }
 
@@ -76,30 +73,21 @@ function LoadFiles($dir,$handle ) {
   function SortByDate(&$Files) {
     usort($Files, 'DateCmp');
   }
-
   $Files = LoadFiles('images/photos/',$handle);
   SortByDate($Files);
-  
   foreach($Files as $source){
-
   	/*echo '<img src="/' . $source[0] . '" alt="' . date("F d Y H:i:s", $source[1]) . '" />';*/
-
 /*?>
-              
-              
-              
-              <? $count =0;$colcount=1;
+                  <? $count =0;$colcount=1;
               while ($file = readdir($handle)) {
                 if ($file<>".") {
                   if ($file<>".."){
                     if ($file<>".DS_Store"){*/
                       $count+=1;
                       $slide="$source[0]";
-
                       echo "<div class='slide container".$count."'>";
                       echo  "<img src='".$slide."'>";
                       echo "</div>";
-
                       if($count%$NumberSlidesInCols == 0){ // number of slides per slot before move to next column
                         $colcount+=1;
                         if($colcount ==5){$colcount=1;}// how many boxes/columns
@@ -115,22 +103,20 @@ function LoadFiles($dir,$handle ) {
               }*/
               closedir($handle);
               ?>
-              
-              
-              
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </photo_dashboard>
+    </div>
     <script>
       function _isMobile() {
-      var isMobile = (/iphone|ipod|android|ie|blackberry|fennec/).test(navigator.userAgent.toLowerCase());
-      return isMobile;
-    }
-    mobile = _isMobile();
+        var isMobile = (/iphone|ipod|android|ie|blackberry|fennec/).test(navigator.userAgent.toLowerCase());
+        return isMobile;
+      }
+      mobile = _isMobile();
 
-      
+
       // TILT action code
       var gama = null;
       var zone = null;
@@ -155,7 +141,7 @@ function LoadFiles($dir,$handle ) {
       var Target = 1000;
       var fadeDir = 1;
       var Mpos = 0;
-      
+
 
 
       function init() {
@@ -207,51 +193,51 @@ function LoadFiles($dir,$handle ) {
           tilted = averageIt(pitch, flicker);
           //varies between 0 and 1
           // total range of possible tilt = 12
-                
-          
-          if(mobile="false"){
-          var number = 1;
-          var mobileRange = 18 / number_of_slides;
-          var mobileZone = (tilted / mobileRange) - number_of_slides / 4;
-          $Opacity = mobileZone + number_of_slides;
-          Opacity = mobileZone + number_of_slides;
-          var $output = "Opacity = " + Opacity + "<br> number_of_slides= " + number_of_slides + "<br>Mouse Pos = " + Mpos;
-          //document.getElementById("demo").innerHTML = $output;
-          number = 1;
-          RowNum = 1;
-          while (number <= number_of_slides) {
-            if (number % 4 == 0) {
-              RowNum = 1
-            };
-            mixOpacity('div.container' + number, $Opacity - RowNum * 3)
-            number++;
-            RowNum += 1;
-          }
+
+
+          if (mobile = "false") {
+            var number = 1;
+            var mobileRange = 18 / number_of_slides;
+            var mobileZone = (tilted / mobileRange) - number_of_slides / 4;
+            $Opacity = mobileZone + number_of_slides;
+            Opacity = mobileZone + number_of_slides;
+            var $output = "Opacity = " + Opacity + "<br> number_of_slides= " + number_of_slides + "<br>Mouse Pos = " + Mpos;
+            //document.getElementById("demo").innerHTML = $output;
+            number = 1;
+            RowNum = 1;
+            while (number <= number_of_slides) {
+              if (number % 4 == 0) {
+                RowNum = 1
+              };
+              mixOpacity('div.container' + number, $Opacity - RowNum * 3)
+              number++;
+              RowNum += 1;
+            }
           }
         });
-          }
-
-        function Round(num) {
-          x = num.toFixed(smoothness);
-          x = Number(x);
-          return x;
-        }
-        //further smoothing
-        function averageIt(tilt, flicker) {
-          averageOf.pop();
-          averageOf.unshift(tilt);
-          for (i = 0; i < flicker; i++) {
-            totalx += averageOf[i];
-          }
-          avex = totalx / flicker;
-          avex = Round(avex);
-          tilt = avex;
-          i = 0;
-          totalx = 0;
-          flicker = 0;
-          return avex;
-        }
       }
+
+      function Round(num) {
+        x = num.toFixed(smoothness);
+        x = Number(x);
+        return x;
+      }
+      //further smoothing
+      function averageIt(tilt, flicker) {
+        averageOf.pop();
+        averageOf.unshift(tilt);
+        for (i = 0; i < flicker; i++) {
+          totalx += averageOf[i];
+        }
+        avex = totalx / flicker;
+        avex = Round(avex);
+        tilt = avex;
+        i = 0;
+        totalx = 0;
+        flicker = 0;
+        return avex;
+      }
+      
       //END tilt action specific code
 
       $('.box').mousemove(function(e) {
@@ -266,7 +252,7 @@ function LoadFiles($dir,$handle ) {
 
 
         var zone = ((Mpos / 200) * scale) - scale * 3; // width of travel for one slide transition
-        $Opacity = zone -(boxWidth/1000); // width of travel for one slide transition
+        $Opacity = zone - (boxWidth / 1000); // width of travel for one slide transition
         number = 1;
         RowNum = 1;
         while (number <= number_of_slides) {
@@ -293,6 +279,6 @@ function LoadFiles($dir,$handle ) {
       };
 
     </script>
-  </div>
-  <p class="full-width info">Return <a href="dashboard.php">to main dashboard </a>.</p>
-  <?php include 'footer.php' ?>
+
+    <p class="full-width info">Return <a href="dashboard.php">to main dashboard </a>.</p>
+    <?php include 'footer.php' ?>
