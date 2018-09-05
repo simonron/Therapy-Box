@@ -52,20 +52,52 @@ include('header.php')
             <div class="slide_column col_1">
               <? $dir="images/photos/"; $handle=opendir($dir); 
               $fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
-          echo $fi;
-              $NumberSlidesInCols = (iterator_count($fi)/4)?>
+              $NumberSlidesInCols = (iterator_count($fi)/4);
+          
+function LoadFiles($dir,$handle ) {
+    $Files = array();
+
+ 
+      while ($Filename = readdir($handle)) {
+        if ($Filename == '.' || $Filename == '..' || $Filename == '.DS_Store')
+        continue;
+        
+        $LastModified = filemtime($dir . $Filename);
+        $Files[] = array($dir . $Filename, $LastModified);
+      }
+
+    return $Files;
+  }
+
+  function DateCmp($a, $b) {
+    return ($a[1] < $b[1]) ? -1 : 0;
+  }
+
+  function SortByDate(&$Files) {
+    usort($Files, 'DateCmp');
+  }
+
+  $Files = LoadFiles('images/photos/',$handle);
+  SortByDate($Files);
+  
+  foreach($Files as $source){
+
+  	/*echo '<img src="/' . $source[0] . '" alt="' . date("F d Y H:i:s", $source[1]) . '" />';*/
+
+/*?>
+              
+              
+              
               <? $count =0;$colcount=1;
               while ($file = readdir($handle)) {
                 if ($file<>".") {
                   if ($file<>".."){
-                    if ($file<>".DS_Store"){
+                    if ($file<>".DS_Store"){*/
                       $count+=1;
-                      $slide="$file";
-                      
-                      $LastModified = filemtime($file);
-                      $Files[] = array($dir .$file, $LastModified);
+                      $slide="$source[0]";
+
                       echo "<div class='slide container".$count."'>";
-                      echo  "<img src='images/photos/".$slide."'>";
+                      echo  "<img src='".$slide."'>";
                       echo "</div>";
 
                       if($count%$NumberSlidesInCols == 0){ // number of slides per slot before move to next column
@@ -75,13 +107,17 @@ include('header.php')
                   <div class='column'>
                   <div class='slide_column col_$colcount'>");
                       }
+  }
                       $target = htmlspecialchars($_SESSION["target"]);
-                    }
+  /*                  }
                   }
                 }
-              }
+              }*/
               closedir($handle);
               ?>
+              
+              
+              
             </div>
           </div>
         </div>

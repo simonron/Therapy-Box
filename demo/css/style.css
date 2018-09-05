@@ -224,7 +224,25 @@ dashboard, left_column {
 /******************PHOTO DASHBOARD*********************/
 /******************PHOTO DASHBOARD*********************/
 .photo_dashboard {
-  height: 200vh; }
+  height: 200vh;
+  /*
+    #table_container > div.columns.box > div:nth-child(1) > div > div.slide:first-child,
+    #table_container > div.columns.box > div:nth-child(2) > div > div.slide:first-child,
+    #table_container > div.columns.box > div:nth-child(3) > div > div.slide:first-child,
+    #table_container > div.columns.box > div:nth-child(4) > div > div.slide:first-child{
+      opacity:1 !important;
+      background:#f00 !important;
+  */
+  /*  }
+  }*/
+  /*
+    #table_container > div.columns.box > div:nth-child(1) > div > div.slide:after,
+    #table_container > div.columns.box > div:nth-child(2) > div > div.slide:after,
+    #table_container > div.columns.box > div:nth-child(3) > div > div.slide:after,
+    #table_container > div.columns.box > div:nth-child(4) > div > div.slide:after,
+  body{
+        content: "YES!";
+  */ }
   @media (min-width: 930px) {
     .photo_dashboard {
       height: 100vh; }
@@ -285,16 +303,3 @@ dashboard, left_column {
       object-fit: cover;
       border-radius: 4px;
       object-position: 0 10%; }
-  .photo_dashboard #table_container > div.columns.box > div:nth-child(1) > div > div.slide:first-child,
-  .photo_dashboard #table_container > div.columns.box > div:nth-child(2) > div > div.slide:first-child,
-  .photo_dashboard #table_container > div.columns.box > div:nth-child(3) > div > div.slide:first-child,
-  .photo_dashboard #table_container > div.columns.box > div:nth-child(4) > div > div.slide:first-child {
-    opacity: 1 !important;
-    background: #f00 !important; }
-
-#table_container > div.columns.box > div:nth-child(1) > div > div.slide:after,
-#table_container > div.columns.box > div:nth-child(2) > div > div.slide:after,
-#table_container > div.columns.box > div:nth-child(3) > div > div.slide:after,
-#table_container > div.columns.box > div:nth-child(4) > div > div.slide:after,
-body {
-  content: "YES!"; }
