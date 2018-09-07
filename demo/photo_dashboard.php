@@ -293,7 +293,7 @@ include('header.php')
       var zone = (Mpos / number_of_slides * 0.6); // width of travel for one slide transition
       console.log("zone = " + zone);
 
-      $Opacity = zone; // width of travel for one slide transition
+      $Opacity = zone/4; // width of travel for one slide transition
       console.log("$Opacity= " + $Opacity);
 
       number = 0;
