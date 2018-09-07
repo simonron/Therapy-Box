@@ -1,5 +1,3 @@
-
-
 <? $dir="images/photos"; $handle=opendir($dir); ?>
 <? $count =0;
 while ($file = readdir($handle)) {

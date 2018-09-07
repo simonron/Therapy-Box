@@ -9,8 +9,6 @@ $username = htmlspecialchars($_SESSION["username"]);
 //echo'<br>'+$username
 $sql = 'SELECT username, profile_image FROM users';
 $result = mysqli_query($link, $sql);
-$pass=0;
-$colCount=0;
 
 if (mysqli_num_rows($result) > 0) {
   // output data of each row
@@ -48,15 +46,15 @@ include('header.php')
               </div>
             </div>
           </div>
-          <div id="thumbBox">
+         <div id="thumbBox">
 
-            <?php include 'photoThumbSlider.php';?>
+              <?php include 'photoThumbSlider.php';?>
           </div>
         </div>
         <div class="columns box">
-      
-
-          <? $dir="images/photos/"; $handle=opendir($dir); 
+          <div class="column">
+            <div class="slide_column col_0">
+              <? $dir="images/photos/"; $handle=opendir($dir); 
           $fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
           $NumberSlidesInCols = (iterator_count($fi)/4);
 
@@ -78,41 +76,45 @@ include('header.php')
             return ($a[1] < $b[1]) ? -1 : 0;
           }
 
-          function SortByName(&$Files) {
-            //usort($Files, 'DateCmp');
-            sort($Files);
+          function SortByDate(&$Files) {
+            usort($Files, 'DateCmp');
           }
-          
           $Files = LoadFiles('images/photos/',$handle);
-          SortByName($Files);
-          
+          SortByDate($Files);
           foreach($Files as $source){
-            if($pass%$NumberSlidesInCols == 0 || $pass == 0){// number of slides per slot before move to next column
-              echo("      
-                  <div class='column'>
-                  <div class='slide_column col_$colCount'>
-                  ");
-            }//sets start of each of four box columns
-
-            $slide="$source[0]";// runs through all slides(in order) statring at 0
-            echo "<div class='slide container".$pass."'>";
+            /*echo '<img src="/' . $source[0] . '" alt="' . date("F d Y H:i:s", $source[1]) . '" />';*/
+            /*?>
+                  <? $count =0;$colcount=1;
+              while ($file = readdir($handle)) {
+                if ($file<>".") {
+                  if ($file<>".."){
+                    if ($file<>".DS_Store"){*/
+            $count+=1;
+            $slide="$source[0]";
+            echo "<div class='slide container".$count."'>";
             echo  "<img src='".$slide."'>";
             echo "</div>";
-            $pass+=1;
-          
-            if($pass%$NumberSlidesInCols == 0){ // how many boxes/columns
-              echo "</div></div>";
-              $colCount+=1;
+            if($count%$NumberSlidesInCols == 0){ // number of slides per slot before move to next column
+              $colcount+=1;
+              if($colcount ==5){$colcount=1;}// how many boxes/columns
+              echo(" </div></div>       
+                  <div class='column'>
+                  <div class='slide_column col_$colcount'>");
             }
           }
           $target = htmlspecialchars($_SESSION["target"]);
+          /*                  }
+                  }
+                }
+              }*/
           closedir($handle);
-          ?>
+              ?>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
   <script>
     function _isMobile() {
       var isMobile = (/iphone|ipod|android|ie|blackberry|fennec/).test(navigator.userAgent.toLowerCase());
@@ -243,86 +245,83 @@ include('header.php')
     }
 
     //END tilt action specific code
-
+    
     //start - small thumbnail viewer window code
-    $('#thumbBox').mousemove(function(e) {
-      var thumbBoxLeft = $('#thumbBox').offset().left;
-      console.log("thumbBoxLeft= " + thumbBoxLeft);
-      var thumbBoxWidth = $('#thumbBox').width();
-      console.log("thumbBoxWidth= " + thumbBoxWidth);
-      var thumbMpos = (e.pageX) - thumbBoxLeft;
-      console.log("thumbMpos = " + thumbMpos);
-      var thumbZone = (((thumbMpos + number_of_slides) / (thumbBoxWidth)) * number_of_slides);
-      console.log("thumbZone = " + thumbZone);
-      thumbOpacity = 1 - (thumbZone);
-      console.log("thumbOpacity= " + thumbOpacity);
-      //console.log("number_of_slides= " + number_of_slides);
-      number = 0;
-      while (number <= number_of_slides) {
-        mixOpacity('div.thumbContainer' + number, thumbOpacity + number_of_slides - number);
-        number++;
-        console.log("thumbOpacity - number= " + (thumbOpacity - number));
-        console.log("thumbMpos = " + thumbMpos);
-      }
-      //allways displayed slides
-      mixOpacity('div.thumbContainer1 ,1');
-    });
+      $('#thumbBox').mousemove(function(e) {
+          var thumbBoxLeft = $('#thumbBox').offset().left;
+          console.log("thumbBoxLeft= " + thumbBoxLeft);
+          var thumbBoxWidth = $('#thumbBox').width();
+          console.log("thumbBoxWidth= " + thumbBoxWidth);
+          var thumbMpos = (e.pageX) - thumbBoxLeft;
+          console.log("thumbMpos = " + thumbMpos);
+          var thumbZone = (((thumbMpos+number_of_slides) / (thumbBoxWidth)) * number_of_slides);
+          console.log("thumbZone = " + thumbZone);
+          thumbOpacity = 1 - (thumbZone );
+          console.log("thumbOpacity= " + thumbOpacity);
+          //console.log("number_of_slides= " + number_of_slides);
+          number = 0;
+          while (number <= number_of_slides) {
+            mixOpacity('div.thumbContainer' + number, thumbOpacity + number_of_slides - number);
+            number++;
+            console.log("thumbOpacity - number= " + (thumbOpacity - number));
+            console.log("thumbMpos = " + thumbMpos);
+          }
+          //allways displayed slides
+                mixOpacity('div.thumbContainer1 ,1');
+        }
+      );
 
 
 
     //start - four boxes viewer window code
 
     $('.box').mousemove(function(e) {
-      var boxLeft = $('.box').offset().left;
+     var boxLeft = $('.box').offset().left;
 
-      console.log("boxLeft = " + boxLeft);
-      //  var winWidth = $('.box').width() + boxLeft + 9;
-      //console.log("winWidth = " + winWidth);
-      // var bodyWidth = $('body').width();
-      //  console.log("bodyWidth = " + bodyWidth);*/
-
+      //console.log("boxLeft = " + boxLeft);
+/*      var winWidth = $('.box').width() + boxLeft + 9;
+      console.log("winWidth = " + winWidth);
+      var bodyWidth = $('body').width();
+      console.log("bodyWidth = " + bodyWidth);*/
+      
       var boxWidth = $('.box').width();
-      console.log("boxWidth = " + boxWidth);
+      //console.log("boxWidth = " + boxWidth);
       var Mpos = boxWidth - (e.pageX - boxLeft);
       console.log("Mpos = " + Mpos);
       //var scale = (boxWidth / 500); 
       //console.log("scale = " + scale);
-      /*
+/*
       var zone = (Mpos / number_of_slides*0.6) ; // width of travel for one slide transition
 */
-      var zone = (Mpos / number_of_slides * 0.6); // width of travel for one slide transition
-      console.log("zone = " + zone);
+      var zone = (Mpos / number_of_slides*0.6) ; // width of travel for one slide transition
 
+      
+      console.log("zone = " + zone);
       $Opacity = zone; // width of travel for one slide transition
       console.log("$Opacity= " + $Opacity);
 
-      number = 0;
-      RowNum = 0;
-
-
+      number = 1; 
+      RowNum = 1;
+      
+      
       while (number <= number_of_slides) {
-
-        mixOpacity('div.container' + number, $Opacity - RowNum);
+        if (RowNum % 4 == 0) {
+          RowNum = 1
+        };
+        mixOpacity('div.container' + number, $Opacity - RowNum + 1);
         number++;
         RowNum += 1;
-        if (RowNum % 5 == 0) {
-          RowNum = 0
-        };
         //console.log("div.container" + number +" Opacity = "+($Opacity+RowNum-5 ));
       }
       //allways displayed slides for row of five
-      mixOpacity('#thumbnails div:first-child', 1);
-      mixOpacity('#table_container .col_0 div:first-child', 1);
-      mixOpacity('#table_container .col_1 div:first-child', 1);
-      mixOpacity('#table_container .col_2 div:first-child', 1);
-      mixOpacity('#table_container .col_3 div:first-child', 1);
+      mixOpacity('#thumbnails div:first-child', 1); mixOpacity('#table_container .col_0 div:first-child', 1); mixOpacity('#table_container .col_1 div:first-child', 1); mixOpacity('#table_container .col_2 div:first-child', 1); mixOpacity('#table_container .col_3 div:first-child', 1);
 
     });
 
     function mixOpacity(div, Opacity) { // sets css opacity of DIV
       //console.log(div + " Opacity = " + Opacity);
       $(div).attr("style", "opacity:" + Opacity);
-
+      
       //console.log("mixOpacity Called");
     };
 
