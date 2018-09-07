@@ -1,122 +1,8 @@
 <?php
-// Initialize the session
-session_start();
-$_SESSION["upload_target"] = 'photos';
+  echo'<script>
+alert("start script");
 
-require_once "config.php";
-
-$username = htmlspecialchars($_SESSION["username"]);
-//echo'<br>'+$username
-$sql = 'SELECT username, profile_image FROM users';
-$result = mysqli_query($link, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-  // output data of each row
-  while($row = mysqli_fetch_assoc($result)) {
-
-    if($row["username"]===$username){$profile_image = $row["profile_image"];}
-  }
-} 
-
-include('header.php')
-?>
-<script type="text/javascript" src="js/image_upload_script.js"></script>
-
-</head>
-
-<body>
-  <div class="photo_dashboard bgContainer">
-    <div class="internal_wrappper">
-      <br>
-      <h1>Photos</h1>
-      <div id="table_container">
-
-        <div id="left_column">
-          <div id="add_photo">
-            <h2>Add Photo</h2>
-            <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
-              <?  $file = 'images/photos/'.$photo; ?>
-              <div id="drag_upload_file">
-                <p>Add picture</p>
-                <p>or</p>
-                <p><input type="button" value="Select File" onclick="file_explorer();" <? if($upload_target=="photos" ){ header( "location: photo_dashboard.php"); }?> >
-                </p>
-
-                <input type="file" id="selectfile">
-              </div>
-            </div>
-          </div>
-         <div id="thumbBox">
-
-              <?php include 'photoThumbSlider.php';?>
-          </div>
-        </div>
-        <div class="columns box">
-          <div class="column">
-            <div class="slide_column col_0">
-              <? $dir="images/photos/"; $handle=opendir($dir); 
-          $fi = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
-          $NumberSlidesInCols = (iterator_count($fi)/4);
-
-          function LoadFiles($dir,$handle ) {
-            $Files = array();
-            $Forwards = array();
-            while ($Filename = readdir($handle)) {
-              if ($Filename == '.' || $Filename == '..' || $Filename == '.DS_Store')
-                continue;
-              $DateCreated = filemtime($dir . $Filename);
-              $Forwards[] = array($dir . $Filename, $DateCreated);
-              //$Files[] = array($dir . $Filename, $DateCreated);
-              $Files = array_reverse($Forwards, true);
-            }
-            return $Files;
-          }
-
-          function DateCmp($a, $b) {
-            return ($a[1] < $b[1]) ? -1 : 0;
-          }
-
-          function SortByDate(&$Files) {
-            usort($Files, 'DateCmp');
-          }
-          $Files = LoadFiles('images/photos/',$handle);
-          SortByDate($Files);
-          foreach($Files as $source){
-            /*echo '<img src="/' . $source[0] . '" alt="' . date("F d Y H:i:s", $source[1]) . '" />';*/
-            /*?>
-                  <? $count =0;$colcount=1;
-              while ($file = readdir($handle)) {
-                if ($file<>".") {
-                  if ($file<>".."){
-                    if ($file<>".DS_Store"){*/
-            $count+=1;
-            $slide="$source[0]";
-            echo "<div class='slide container".$count."'>";
-            echo  "<img src='".$slide."'>";
-            echo "</div>";
-            if($count%$NumberSlidesInCols == 0){ // number of slides per slot before move to next column
-              $colcount+=1;
-              if($colcount ==5){$colcount=1;}// how many boxes/columns
-              echo(" </div></div>       
-                  <div class='column'>
-                  <div class='slide_column col_$colcount'>");
-            }
-          }
-          $target = htmlspecialchars($_SESSION["target"]);
-          /*                  }
-                  }
-                }
-              }*/
-          closedir($handle);
-              ?>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-    function _isMobile() {
+function _isMobile() {
       var isMobile = (/iphone|ipod|android|ie|blackberry|fennec/).test(navigator.userAgent.toLowerCase());
       return isMobile;
     }
@@ -245,9 +131,9 @@ include('header.php')
     }
 
     //END tilt action specific code
-$('#thumbBox').mousemove(function(e) {
-     var thumbBoxLeft = $('#thumbBox').offset().left;
-      var thumbBoxWidth = $('#thumbBox').width();
+$('.thumbBox').mousemove(function(e) {
+     var thumbBoxLeft = $('#thumbnails').offset().left;
+      var thumbBoxWidth = $('#thumbnails').width();
       var thumbMpos = thumbBoxWidth - (e.pageX - thumbBoxLeft);
       console.log("thumbMpos = " + thumbMpos);
       var thumbZone = (thumbMpos / number_of_slides*0.6) ; 
@@ -308,8 +194,6 @@ $('#thumbBox').mousemove(function(e) {
       
       //console.log("mixOpacity Called");
     };
-
-  </script>
-
-  <p class="full-width info">Return <a href="dashboard.php">to main dashboard </a>.</p>
-  <?php include 'footer.php' ?>
+    alert();
+</script>';
+?>

@@ -194,13 +194,13 @@ dashboard, left_column {
     color: #000; }
   dashboard div#weather_condition img, left_column div#weather_condition img {
     transform: scale(3, 3); }
-  dashboard div#photos, left_column div#photos {
+  dashboard #photos, left_column #photos {
     position: relative; }
-    dashboard div#photos div, left_column div#photos div {
+    dashboard #photos div, left_column #photos div {
       position: absolute;
       margin-top: -7px;
       width: 100%; }
-    dashboard div#photos img, left_column div#photos img {
+    dashboard #photos img, left_column #photos img {
       width: 276px;
       height: 163px;
       object-fit: cover;
