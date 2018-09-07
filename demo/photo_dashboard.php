@@ -80,7 +80,7 @@ include('header.php')
 
           function SortByName(&$Files) {
             //usort($Files, 'DateCmp');
-            sort($Files);
+            ksort($Files);
           }
           
           $Files = LoadFiles('images/photos/',$handle);
