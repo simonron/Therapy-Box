@@ -5,6 +5,7 @@
 		e.preventDefault();
 		fileobj = e.dataTransfer.files[0];
 		ajax_file_upload(fileobj);
+    //reloadPage();
 	}
 
 	function file_explorer() {
@@ -27,8 +28,8 @@
 				processData: false,
 				data: form_data,
 				success:function(response) {
-					alert(response);
-          //reloadPage();
+					//alert(response);
+          reloadPage(response);
 					$('#selectfile').val('');
 				}
 			});
@@ -36,6 +37,7 @@
 		}
 	}
 
-/*function reloadPage() {
-    location.reload();
-}*/
+function reloadPage(response) {
+  alert(response);
+    location.reload(true);
+}

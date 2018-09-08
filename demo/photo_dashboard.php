@@ -104,7 +104,7 @@ include('header.php')
               echo "</div></div>";
               $colCount+=1;
             }
-            if($colCount==4){$colCount=0;}
+            //if($colCount==4){$colCount=0;}
           }
           $target = htmlspecialchars($_SESSION["target"]);
           closedir($handle);
