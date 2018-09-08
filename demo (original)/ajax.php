@@ -2,7 +2,7 @@
 session_start();
 $upload_target = $_SESSION["upload_target"];
 
-echo "!!! ".$upload_target." !!!!";
+//echo "!!! ".$upload_target." !!!!";
 
 
 $arr_file_types = ['image/png', 'image/gif', 'image/jpeg'];

@@ -35,11 +35,11 @@ include('header.php')
           <div id="add_photo">
             <h2>Add Photo</h2>
             <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
-              <?  $file = 'images/photos/'.$photo; ?>
+              <?  $file = 'images/photos/'.$photo; ?> 
               <div id="drag_upload_file">
                 <p>Add picture</p>
                 <p>or</p>
-                <p><input type="button" value="Select File" onclick="file_explorer();" <? if($upload_target=="photos" ){ header( "location: photo_dashboard.php"); }?> >
+                <p><input type="button" value="Select File" onclick='file_explorer()';>
                 </p>
 
                 <input type="file" id="selectfile">

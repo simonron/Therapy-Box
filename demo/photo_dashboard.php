@@ -84,7 +84,7 @@ include('header.php')
           }
           
           $Files = LoadFiles('images/photos/',$handle);
-          SortByName($Files);
+          DateCmp($Files);
           
           foreach($Files as $source){
             if($pass%$NumberSlidesInCols == 0 || $pass == 0){// number of slides per slot before move to next column
@@ -104,6 +104,7 @@ include('header.php')
               echo "</div></div>";
               $colCount+=1;
             }
+            if($colCount==4){$colCount=0;}
           }
           $target = htmlspecialchars($_SESSION["target"]);
           closedir($handle);
